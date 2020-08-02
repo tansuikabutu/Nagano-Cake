@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     end
     @genres = Genre.all
   end
-  end
+
 
   def show
   	@item = Item.find(params[:id])
