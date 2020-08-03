@@ -11,3 +11,24 @@ Admin.create!(
   password: 'testtest',
   password_confirmation: 'testtest'
   )
+
+Genre.create!(
+ [
+	{
+	name: "ケーキ",
+	is_status: 0
+	},
+	{
+	name: "プリン",
+	is_status: 0
+	},
+  {
+    name: "焼き菓子",
+    is_status: 0
+  },
+  {
+    name: "キャンディ",
+    is_status: 0
+  }
+ ]
+)
