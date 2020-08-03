@@ -18,7 +18,7 @@ class DeliveryAddressesController < ApplicationController
       redirect_to delivery_addresses_path
     else 
       @member = current_user
-      @delivery_addresses = @member.delivery_addresses.all
+      @delivery_addresses = @member.delivery_addresses
       render :index
     end
   end
@@ -32,15 +32,19 @@ class DeliveryAddressesController < ApplicationController
   end
 
 
+  def edit
+    @delivery_address = DeliveryAddress.find(params[:id])
+    if @delivery_address.member != current_member
+    redirect_to delivery_addresses_path
+    end
+  end
+
+
+
   def update
 
   end
 
-
-
-
-  def edit
-  end
 
 
 
