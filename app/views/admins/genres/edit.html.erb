@@ -1,6 +1,29 @@
-<h1>ジャンル編集</h1>
-<p>ジャンル</p>
-<p>プリン</p>
-<p>有効</p>
-<p>無効</p>
-<p>変更を保存する</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+<!-- ジャンルの編集＝adminが投稿したジャンル(@genre = Genre.find(params[:id]))を編集したい -->
+			<h3>ジャンル編集</h3>
+			<%= form_for(@genre) do |f| %>
+	<div class="field row">
+		<%= f.label :ジャンル %>
+		<%= f.text_field :name, class: "col-xs-9 genre_name" %>
+	</div>
+
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-9" %>
+	</div>
+<% end %>
+
+<% if @genre.errors.any? %>
+			error
+			    <ul>
+			      <% @genre.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
