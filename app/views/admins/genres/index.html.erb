@@ -4,10 +4,23 @@
 
 			<h3>ジャンル一覧・追加</h3>
 			<br>
-
+			<!-- 有効・無効ステータス -->
+<!-- url以下つけてindex画面を指定しないとエラーになる -->
+			<%= form_for @genre, url: admins_genres_path do |f| %>
+    <div class="field row ">
+      <lavel>ジャンル</lavel>
+      <%= f.text_field :name %>
+      <label><%= f.radio_button :is_status, "有効" ,checked: "checked"%> 有効 </label>
+      <label><%= f.radio_button :is_status, "無効" %> 無効</label>
+      <%= f.submit "追加", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+　　　　　　　<!-- 有効・無効ステータス -->
     <br>
+    <!-- クリックすると表示がアクティブに -->
     <table class = "table table-hover">
       <thead>
+      	 <!-- ジャンル・状態を灰色に -->
         <tr class="active">
           <th>ジャンル</th>
           <th>状態</th>
