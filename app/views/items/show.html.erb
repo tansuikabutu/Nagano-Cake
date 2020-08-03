@@ -1,2 +1,38 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <!-- ジャンル検索サイドバー -->
+    <div class="col-xs-2">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th class="active text-center"><h5 class="genre_said">ジャンル検索</h5></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げる。パラメーターにはクリックしたジャンルのidを渡す。 -->
+      </tbody>
+    </table>
+  </div>
+
+  	<div class="col-xs-9">
+  	  <div class="row" style="margin-top: 50px;">
+  	  	<div style="float: left; margin: 15px 50px;">
+          <%= attachment_image_tag @item, :image, size: "300x300", fallback: "no_image.jpg" %>
+        </div>
+  	  	<div style="width:400px; height:300px; float:left;">
+  	  	  <h3 style="color: white;"><%= @item.name %></h3><br>
+  	  	  <p><%= @item.introduction %></p>
+  	  	  <p class="price">¥<%= (@item.price*1.1).floor %><span style="font-size:12px;">（税込）</span></p>
+  	  	</div>
+  	  </div>
+      <div class="col-xs-5">
+      <strong class="error"><%= notice %></strong>
+        <%= form_for @cart_item, url: public_cart_items_path(@cart_item) do |f| %>
+        <%= f.hidden_field :item_id  , :value => @item.id%>
+        <%= f.number_field :number_of_items , placeholder: "個数選択", min: 1, max: 20 %> <!-- f.selectでも可。placeholderで空欄時に個数選択を表示。選択数の最低値を設定するためにminを設定。 -->
+        <%= f.submit "カートに入れる" ,class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+  	</div>
+  </div>
+</div>
