@@ -1,4 +1,25 @@
 
+<!-- フラッシュメッセージ -->
+<div class= "flash" style="text-align:center ">
+	<% if flash[:notice] %>
+	  <p><%= flash[:notice] %></p>
+	<% end %>
+</div>
+
+
+<!-- バリデーションメッセージ -->
+
+<% if @delivery_address.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @delivery_address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 
 <div class="index-container" style="width:60%; margin: 50px auto;">
 <!-- 配送先登録フォーム -->
