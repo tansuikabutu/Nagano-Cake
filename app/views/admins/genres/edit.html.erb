@@ -1,27 +1,22 @@
+<!-- 横並びの順番を整える -->
+
 <div class="container">
 	<div class="row">
 		<div class="col-xs-6">
-<!-- ジャンルの編集＝adminが投稿したジャンル(@genre = Genre.find(params[:id]))を編集したい -->
-			<h3>ジャンル編集</h3>
+			<!-- ジャンルの編集＝adminが投稿したジャンル(@genre = Genre.find(params[:id]))を編集したい -->
+			<h3>ジャンル編集</h3><br>
+
 			<%= form_for(@genre) do |f| %>
-	<div class="field row">
-		<%= f.label :ジャンル %>
-		<%= f.text_field :name, class: "col-xs-9 genre_name" %>
-	</div>
+			<div class="field row">
+				<label>ジャンル</label>
+				<%= f.text_field :name, class: "col-xs-3 genre_name" %>
+				<label><%= f.radio_button :is_status, "有効" %> 有効 </label>
+				<label><%= f.radio_button :is_status, "無効" %> 無効</label>
 
-	<div class="actions row">
-		<%= f.submit class: "btn btn-primary col-xs-9" %>
-	</div>
-<% end %>
-
-<% if @genre.errors.any? %>
-			error
-			    <ul>
-			      <% @genre.errors.full_messages.each do |message| %>
-			        <li><%= message %></li>
-			      <% end %>
-			    </ul>
+				<%= f.submit "変更を保存する", class: "btn btn-primary col-xs-3" %>
+			</div>
 			<% end %>
+
 		</div>
 	</div>
 </div>
