@@ -11,20 +11,14 @@ class Admins::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params) # フォームから送られてきたデータ(body)をストロングパラメータを経由して@genreに代入
-    if @genre.save
-      redirect_to admins_genres_path, notice: "You have created genre successfully."
-    else
-      render 'index'
-    end
+    @genre.save
+    redirect_to admins_genres_path
   end
 
   def update
   	@genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-     redirect_to admins_genres_path, notice: "You have updated genre successfully."
-    else
-      render "edit"
-    end
+    @genre.update(genre_params)
+    redirect_to admins_genres_path
   end
 
  private

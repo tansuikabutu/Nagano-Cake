@@ -15,24 +15,24 @@ Admin.create!(
 Genre.create!(
  [
 	{
-    id: 1,
+  id: 1,
 	name: "ケーキ",
-	is_status: 0
+	is_status: false
 	},
 	{
 	id: 2,
 	name: "プリン",
-	is_status: 0
+	is_status: false
 	},
-    {
-    id: 3,
-    name: "焼き菓子",
-    is_status: 0
-    },
-    {
-    id: 4,
-    name: "キャンディ",
-    is_status: 0
+  {
+  id: 3,
+  name: "焼き菓子",
+  is_status: false
+  },
+  {
+  id: 4,
+  name: "キャンディ",
+  is_status: false
   }
  ]
 )
