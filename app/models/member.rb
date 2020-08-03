@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+ has_many :delivery_addresses,dependent: :destroy
+
   # バリデーション
   validates :first_name,presence: true
   validates :first_name_kana,presence: true
