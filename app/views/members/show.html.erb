@@ -1,27 +1,30 @@
-<div class="col-lg-6 offset-lg-3 space">
+<div class="col-lg-9 offset-lg-3 space">
 	<div class="container">
 		<h2>マイページ</h2>
 	</div>
 
 	<!-- 会員情報 -->
-	<div class="container space">
+	<div class="container">
 	  <div class="row">
-	    <div class="col-lg-5"><h3>登録情報</h3></div>
-		  <div class="col-lg-2">
-		    <%= link_to "編集", edit_member_path, class: "btn-sm btn-danger" %>
+	    <div class="col-lg-2"><h3>登録情報</h3></div>
+		  <div class="col-lg-1">
+		    <%= link_to "編集", edit_member_path, class: "btn btn-danger" %>
 		  </div>
-
-		  <div class="col-lg-4">
-            <%= link_to "パスワード変更", new_member_password_path, class: 'btn-sm btn-danger' %>
+		  <div class="col-lg-1">
+            <%= link_to "パスワード変更", edit_member_registration_path, class: 'btn btn-danger' %>
           </div>
-        </div>
+      </div>
+
 
         <div class="row">
           <div class="col-lg-3">
             <h4>氏名</h4>
           </div>
-          <div class="col-lg-9">
-        		
+          <div class="col-lg-1">
+          	<%= current_member.last_name %> 
+          </div>
+          <div class="col-lg-1">
+          	<%= current_member.first_name %>
           </div>
         </div>
 
@@ -29,8 +32,11 @@
           <div class="col-lg-3">
             <h4>カナ</h4>
           </div>
-          <div class="col-lg-9">
-        
+          <div class="col-lg-1">
+          	<%= current_member.last_name_kana %>
+          </div>
+          <div class="col-lg-1">
+          	<%= current_member.first_name_kana %>
           </div>
         </div>
 
@@ -39,7 +45,7 @@
             <h4>郵便番号</h4>
           </div>
           <div class="col-lg-9">
-          〒
+          〒<%= current_member.postcode %>
           </div>
         </div>
 
@@ -48,7 +54,7 @@
             <h4>住所</h4>
           </div>
           <div class="col-lg-9">
-            
+            <%= current_member.address %>
            </div>
         </div>
 
@@ -57,7 +63,7 @@
             <h4>電話番号</h4>
           </div>
           <div class="col-lg-9">
-        
+          	<%= current_member.phone_number %>
           </div>
         </div>
 
@@ -66,7 +72,7 @@
             <h4>Eメール</h4>
           </div>
           <div class="col-lg-9">
-            
+          	<%= current_member.email %>
           </div>
         </div>
       </div>

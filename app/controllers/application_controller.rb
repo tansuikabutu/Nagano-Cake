@@ -11,7 +11,11 @@ protected
       when Member
         member_top_path
       end
-   end
+    end
+
+    def after_sign_out_path_for(resource)
+    	root_path
+    end
 
 
 
