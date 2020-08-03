@@ -30,6 +30,11 @@ class MembersController < ApplicationController
 
 
   private
+  # @memberの値をセット
+  def set_member
+    @member = Member.find(params[:id])
+  end
+
   def member_params
     params.require(:member).permit(:is_status, :first_name, :first_name_kana, :last_name,:last_name_kana,:postcode,:address,:phone_number,:email)
   end
