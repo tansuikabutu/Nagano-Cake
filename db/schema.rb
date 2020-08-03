@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_023656) do
+ActiveRecord::Schema.define(version: 2020_08_03_120126) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_02_023656) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "is_status"
+    t.boolean "is_status", default: false
     t.string "first_name"
     t.string "first_name_kana"
     t.string "last_name"

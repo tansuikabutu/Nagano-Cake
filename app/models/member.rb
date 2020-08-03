@@ -13,4 +13,11 @@ class Member < ApplicationRecord
   validates :address,presence: true
   validates :phone_number,presence: true
 
+
+  #退会後のユーザー（is_statusがtrue）はログインできないようにする＝＞is_statusがfalseの人だけログイン可
+
+  def active_for_authentication?
+    super && (self.is_status == false)
+  end
+
 end

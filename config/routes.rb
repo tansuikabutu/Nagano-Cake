@@ -10,7 +10,7 @@ devise_for :members, controllers: {
 
 get 'homes/top' => 'homes#top', as: 'member_top'
 get 'homes/about' => 'homes#about', as: 'member_about'
-resources :members, only: [:edit, :show, :update]
+resources :members, only: [:edit, :show, :update,]
   get 'members/:id/unsubscribe' => 'members#unsubscribe', as: 'member_unsubscribe'
   patch 'members/:id/unsubscribe' => 'members#unsubscribe_done', as: 'member_unsubscribe_done'
   put "/members/:id/unsubscribe" => "members#unsubscribe_done", as: 'members_unsubscribe_done'

@@ -11,7 +11,7 @@
 		    <%= link_to "編集", edit_member_path, class: "btn btn-danger" %>
 		  </div>
 		  <div class="col-lg-1">
-            <%= link_to "パスワード変更", edit_member_password_path, class: 'btn btn-danger' %>
+            <%= link_to "パスワード変更", edit_member_registration_path, class: 'btn btn-danger' %>
           </div>
       </div>
 
@@ -33,7 +33,7 @@
             <h4>カナ</h4>
           </div>
           <div class="col-lg-1">
-          	<%= current_member.first_name_kana %>
+          	<%= current_member.last_name_kana %>
           </div>
           <div class="col-lg-1">
           	<%= current_member.first_name_kana %>

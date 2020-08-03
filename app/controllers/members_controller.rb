@@ -1,6 +1,10 @@
 class MembersController < ApplicationController
     before_action :authenticate_member!
+    before_action :set_member
     before_action :baria_member, only: [:edit,:update,:unsubscribe]
+
+  def create
+  end
 
   def edit
   end
@@ -11,21 +15,24 @@ class MembersController < ApplicationController
   def unsubscribe
   end
 
-  def udpate
+  def update
     @member = current_member
     if @member.update(member_params)
-       redirect_to member_path(@member), success: "会員情報が更新されました"
+       flash[:notice] = "会員情報が更新されました"
+       redirect_to member_path
     else
-      flash[:danger] = "会員情報の更新ができませんでした"
+      flash[:notice] = "会員情報の更新ができませんでした"
       render :edit
     end
   end
 
   def unsubscribe_done
     @member = current_member
-    @customer.update(is_status: false)
+    #会員ステータスを退会済にする
+    @member.update(is_status: true)
     reset_session
-    redirect_to member_top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to member_top_path
   end
 
 
