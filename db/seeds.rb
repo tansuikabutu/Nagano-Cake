@@ -37,6 +37,23 @@ Genre.create!(
  ]
 )
 
+
+
+Item.create!(
+ [
+  {
+    id: 1,
+    genre_id: 1,
+    name: "いちごのショートケーキ",
+    introduction: "長野県産のを使用した当店一押しの商品です",
+    price: 1000,
+    is_status: 0,
+    image: open("./db/images/image1.jpg")
+  }
+ ]
+)
+
+
  Member.create!(
  [
   {
@@ -96,3 +113,4 @@ Genre.create!(
   },
  ]
  )
+
