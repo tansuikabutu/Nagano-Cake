@@ -37,3 +37,62 @@ Genre.create!(
  ]
 )
 
+ Member.create!(
+ [
+  {
+  id: 1,
+  email: '1@1',
+  last_name: '例田', last_name_kana: 'レイダ',
+  first_name: '一郎',   first_name_kana: 'イチロウ',
+  postcode: '1111111',
+  address: '北岡県乙西川市馬城寺1-1-1',
+  phone_number: '11111111',
+  password: '111111',
+  password_confirmation: '111111',
+  },
+  {
+  id: 2,
+  email: '2@2',
+  last_name: '例田', last_name_kana: 'レイダ',
+  first_name: '二郎',   first_name_kana: 'ジロウ',
+  postcode: '1111111',
+  address: '北岡県乙西川市馬城寺1-1-1',
+  phone_number: '11111111',
+  password: '111111',
+  password_confirmation: '111111',
+  },
+  {
+  id: 3,
+  email: '3@3',
+  last_name: '小野', last_name_kana: 'オノノ',
+  first_name: '妹子',   first_name_kana: 'イモコ',
+  postcode: '3333333',
+  address: '橋都府馬馬市法流寺3-3-3',
+  phone_number: '33333333',
+  password: '111111',
+  password_confirmation: '111111',
+  },
+  {
+  id: 4,
+  email: '4@4',
+  last_name: 'ソク', last_name_kana: 'ソク',
+  first_name: 'ラテス',   first_name_kana: 'ラテス',
+  postcode: '4444444',
+  address: '東京都練馬区井出阿4-4-4',
+  phone_number: '44444444',
+  password: '111111',
+  password_confirmation: '111111',
+  },
+  {
+  id: 5,
+  email: '5@5',
+  last_name: '金', last_name_kana: 'キム',
+  first_name: '蘭太狗屋',   first_name_kana: 'ラタクヤ',
+  postcode: '5555555',
+  address: '巣松府具蘭市芽存町5-5-5',
+  phone_number: '55555555',
+  password: '111111',
+  password_confirmation: '111111',
+  },
+ ]
+ )
