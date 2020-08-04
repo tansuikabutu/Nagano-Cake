@@ -1,2 +1,65 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+
+
+
+
+ <h4><%= notice %></h4>
+<div class="index-container" style="width:80%; margin: 50px auto;">
+	<h2>ショッピングカート</h2>
+	<table class="table table-bordered" style="margin-top: 50px;">
+		  	<thead>
+			  <tr>
+			    <th>商品名</th>
+				<th>単価(税込)</th>
+				<th>数量</th>
+				<th>小計</th>
+			  </tr>
+		    </thead>
+		       <% @cart_items.each do |cart_item| %>
+			   <tbody>
+				    <tr>
+					  <td>
+					  	<%= link_to item_path(cart_item.item) do %>
+                        <%= attachment_image_tag(cart_item.item, :image, size: "50x50", fallback: "no_img.jpg") %>
+                        <% end %>
+                    </td>
+
+					  <td><%= cart_item.item.name %></td>
+
+					  <td><%= price_include_tax(cart_item.item.price) %></td>
+
+					  <td><%= form_with model: cart_item, local: true do |f| %>
+				        	<%= f.number_field :quantity, value: cart_item.quantity, min:1, max:99  %>
+				     	     <%= f.submit "変更", class: "btn btn-primary" %>
+				          <% end %>
+                      </td>
+                      
+                      <td><%= sum_item = price_include_tax(cart_item.item.price).to_i * cart_item.quantity %>円
+                      </td>
+
+
+					  <td>
+						<%= link_to "削除する", cart_items_path,class:"btn btn-danger btn-md", method: :delete %>
+					  </td>
+				    </tr>
+			   </tbody>
+			  <% end %>
+	</table>
+       <div class="row space">
+     	    <div class="col-lg-2 offset-lg-7 space-sm">
+     		<%= link_to "買い物を続ける", member_top_path, class: "btn btn-primary "%>
+     	    </div>
+
+     	<div class="col-lg-3 space-sm">
+		   <div class="row">
+             <!-- 合計金額の記述 を入れる-->
+            </div> 
+        </div>
+           <div class="row space">
+		       <div class="col-lg-3 offset-lg-9">
+			<!-- 注文情報入力(entry)画面へ -->
+			    <%= link_to "情報入力に進む", order_entry_path, class: "btn btn-success btn-lg" %>
+		       </div>
+		    </div>
+
+	    
+</div>
