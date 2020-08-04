@@ -1,2 +1,47 @@
-<h1>Admins::Members#show</h1>
-<p>Find me in app/views/admins/members/show.html.erb</p>
+<div class="col-lg-9 offset-lg-3 space">
+  <div class="container">
+    <h2>会員情報詳細</h2>
+  </div>
+
+  <!-- 会員情報 -->
+  <table class="table table-border">
+    <tr>
+      <th>会員ID</th>
+      <td>
+      <%= @member.id %>
+        <% if @member.is_status? %>
+            <span class="badge" style="background:#d72238;">退会済み</span>
+        <% else %>
+            <span class="badge" style="background:#8bce9a;">有効会員</span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= @member.last_name %> <%= @member.first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= @member.last_name_kana %> <%= @member.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @member.postcode %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @member.address %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @member.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @member.email %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= link_to "編集する", edit_admins_member_path(@member.id) ,class: "btn btn-success" %> <%= link_to "会員一覧にもどる", admins_members_path ,class: "btn btn-danger" %></td>
+    </tr>
+  </table>
