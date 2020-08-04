@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_120126) do
     t.integer "genre_id"
     t.string "name"
     t.text "introduction"
-    t.boolean "is_status", default: false
+    t.boolean "is_status"
     t.string "image_id"
     t.integer "price"
     t.datetime "created_at", null: false
