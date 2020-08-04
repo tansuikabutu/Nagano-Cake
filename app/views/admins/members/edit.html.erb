@@ -1,2 +1,107 @@
-<h1>Admins::Members#edit</h1>
-<p>Find me in app/views/admins/members/edit.html.erb</p>
+<div class='col-lg-10 offset-lg-1 space'>
+  <div class='row'>
+    <h2>登録情報編集</h2>
+  </div>
+
+<div class='row space'>
+    <%= form_for(@member, url:admins_member_path, method: :patch) do |f| %>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :会員ステータス %></h5>
+      </div>
+      <div class='col-lg-2'>
+        <% if @member.is_status? %>
+        　　<td><span class="badge" style="background:#d72238;">退会済み</span></td>
+        <% else %>
+            <td><span class="badge" style="background:#8bce9a;">有効会員</span></td>
+        <% end %>
+      </div>
+      <div class='col-lg-2'>
+        <% if @member.is_status? %>
+          <%= link_to toggle_admins_member_path(@member), method: :patch do %>
+            <span class="btn btn-info">有効会員へ</span>
+          <% end %>
+        <% else %>
+          <%= link_to toggle_admins_member_path(@member), method: :patch do %>
+            <span class="btn btn-danger">退会済みへ</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :名前 %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <span style='display: inline-block;'>
+          (姓)<%= f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control' %>
+        </span>
+        <span style='display: inline-block;'>
+          (名)<%= f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control' %>
+        </span>
+      </div>
+    </div>
+    
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :フリガナ %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <span style='display: inline-block;'>
+          (セイ)<%= f.text_field :last_name_kana, autofocus: true, autocomplete: 'last_name_kana', class: 'form-control' %>
+        </span>
+        <span style='display: inline-block;'>
+          (メイ)<%= f.text_field :first_name_kana, autofocus: true, autocomplete: 'first_name_kana', class: 'form-control' %>
+        </span>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :郵便番号（ハイフンなし） %></h5>
+      </div>
+      <div class='col-lg-2'>
+        <%= f.text_field :postcode, autofocus: true, autocomplete: 'postcode', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :住所 %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :電話番号（ハイフンなし） %></h5>
+      </div>
+      <div class='col-lg-2'>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: 'phone_number', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group row'>
+      <div class='col-lg-4'>
+        <h5><%= f.label :Eメール %></h5>
+      </div>
+      <div class='col-lg-8'>
+        <%= f.text_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-lg-4 offset-lg-8">
+        <%= f.submit '編集内容を保存する', class:'btn btn-danger' %>
+
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
