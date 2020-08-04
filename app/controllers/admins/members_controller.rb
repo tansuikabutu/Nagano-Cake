@@ -15,7 +15,28 @@ class Admins::MembersController < ApplicationController
   end
 
   def update
+  	 @member = Member.find(params[:id])
+    if @member.update(member_params)
+       flash[:notice] = "会員情報が更新されました"
+       redirect_to admins_member_path(@member)
+    else
+      flash[:notice] = "会員情報の更新ができませんでした"
+      render :edit
+    end
   end
+
+  def toggle
+  	@member = Member.find(params[:id])
+
+  	if @member.is_status?
+  		  @member.is_status = false
+  	else
+  		  @member.is_status = true
+  	end
+        @member.save
+        redirect_to edit_admins_member_path(@member)
+  end
+
 
    private
 

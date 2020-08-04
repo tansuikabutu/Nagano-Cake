@@ -6,7 +6,7 @@
 	<!-- 会員情報 -->
   <table class="table table-border">
     <tr>
-      <th>顧客ID</th>
+      <th>会員ID</th>
       <td>
       <%= @member.id %>
         <% if @member.is_status? %>
@@ -39,5 +39,9 @@
     <tr>
       <th>メールアドレス</th>
       <td><%= @member.email %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= link_to "編集する", edit_admins_member_path(@member.id) ,class: "btn btn-success" %> <%= link_to "会員一覧にもどる", admins_members_path ,class: "btn btn-danger" %></td>
     </tr>
   </table>
