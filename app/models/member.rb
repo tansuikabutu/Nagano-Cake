@@ -15,7 +15,7 @@ class Member < ApplicationRecord
   validates :address,presence: true
   validates :phone_number,presence: true
 
-  enum is_status: { 有効会員: false, 退会済み: true }
+  
   #退会後のユーザー（is_statusがtrue）はログインできないようにする＝＞is_statusがfalseの人だけログイン可
 
   def active_for_authentication?
