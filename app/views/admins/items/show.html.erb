@@ -1,4 +1,4 @@
-<div class="container takasa">
+<div class="container">
   <h2>商品詳細</h2><br>
   <div class="row">
     <!-- 画像選択欄 -->
@@ -31,7 +31,7 @@
           <%= @item.is_status%>
         </h4>
 
-        <%= button_to '編集する',edit_admin_item_path(@item.id), method: :get ,class: "btn btn-primary ", style: "margin-left:70%;"%>
+        <%= button_to '編集する',edit_admins_item_url, method: :get ,class: "btn btn-primary ", style: "margin-left:70%;"%>
     </div>
   </div>
 </div>

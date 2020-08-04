@@ -10,12 +10,6 @@
         </tr>
       </thead>
       <tbody>
-        <% genres.each do |genre| %>
-          <tr>
-            <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げてる。パラメーターにはクリックしたジャンルのidを渡してる。 -->
-            <td class="underline"><i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i></td>
-          </tr>
-        <% end %>
       </tbody>
     </table>
 </div>
@@ -24,7 +18,7 @@
     </div>
     
   	<div class="col-xs-9">
-  	  <h2><i class="fas fa-cookie-bite"></i>商品一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
+  	  <h2><i class=""></i>商品一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
   	    <div class="row">
   	      <% @items.each do |item| %>
             <div class="box" style="float:left; margin-right:20px;">

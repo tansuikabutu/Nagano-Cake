@@ -1,11 +1,11 @@
-<div class="container takasa">
+<div class="container">
   <div class="row row-new">
 
     <h2>商品新規登録</h2><br>
 
     <!-- 画像選択欄 -->
     <div class="col-xs-4">
-      <%= form_for(@item, url:admin_items_path) do |f| %>
+      <%= form_for(@item, url:admins_items_path) do |f| %>
 
       <div class="item-image">
         <%= attachment_image_tag @item, :image, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
@@ -42,7 +42,7 @@
           <h4><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %>
           <%= f.select :is_status, ["販売中", "販売停止"] ,class: "btn btn-primary"%></h4>
         </div>
-        <div class="text-right"><%= f.submit "商品登録" ,class: "btn btn-primary"%></div>
+        <div class="text-right"><%= f.submit "新規登録" ,class: "btn btn-primary"%></div>
         <% end %>
       </form>
 

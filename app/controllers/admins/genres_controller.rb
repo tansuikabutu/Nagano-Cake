@@ -1,8 +1,8 @@
 class Admins::GenresController < ApplicationController
-  def edit
+  def index
   end
 
-  def index
+  def edit
   end
 
   def create

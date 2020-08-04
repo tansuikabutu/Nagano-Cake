@@ -18,15 +18,16 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-       redirect_to admin_item_path(@item)
+       redirect_to admins_items_path(@item)
     else
        render "new"
+    end
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_item_path(@item.id)
+      redirect_to admins_items_path(@item.id)
     else
       render "edit"
     end
