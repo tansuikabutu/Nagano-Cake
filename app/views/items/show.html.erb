@@ -1,2 +1,34 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <!-- ジャンル検索サイドバー -->
+    <div class="col-xs-2">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th class="active text-center"><h5 class="genre_said">ジャンル検索</h5></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げる。パラメーターにはクリックしたジャンルのidを渡す。 -->
+      </tbody>
+    </table>
+  </div>
+
+  	<div class="col-xs-5 ">
+      <%= attachment_image_tag @item, :image, size: "300x300", fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-xs-5 ">
+      <h2><%= @item.name %></h2>
+      <p><%= @item.introduction %></p>
+      <p class="price">¥<%= (@item.price*1.1).floor %><span style="font-size:12px;">（税込）</span></p>
+      <%= form_for(@cart_item, url: cart_items_path) do |f|  %>
+      <%= f.number_field :quantity , placeholder: "個数選択", min: 1, max: 20 %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <% if @item.is_status == false %>
+      <%= f.submit '売り切れ', class: "btn btn-new-register btn-lg", disabled: true %>
+      <% else %>
+      <%= f.submit 'カートに入れる', class: "btn btn-success btn-new-register btn-lg"%>
+      <% end %>
+      <% end %>
+    </div>
+</div>
