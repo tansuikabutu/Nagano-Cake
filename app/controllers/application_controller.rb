@@ -1,11 +1,27 @@
 class ApplicationController < ActionController::Base
-end
+
+before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-   def after_sign_up_path_for(resource)
-    items_path
-  end
+protected
+    def after_sign_in_path_for(resource)
+      case resource
+      when Admin
+        admins_top_path
+      when Member
+        member_top_path
+      end
+    end
 
+    def after_sign_out_path_for(resource)
+    	root_path
+    end
+
+
+
+#deviseのストロングパラメーターにカラム追加するメソッドを定義
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :first_name_kana, :last_name, :last_name_kana, :postcode, :address, :phone_number, :email ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:is_status, :first_name, :first_name_kana, :last_name,:last_name_kana,:postcode,:address,:phone_number,:email ])
   end
+
+end

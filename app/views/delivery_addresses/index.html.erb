@@ -1,2 +1,82 @@
-<h1>DeliveryAddresses#index</h1>
-<p>Find me in app/views/delivery_addresses/index.html.erb</p>
+
+<!-- フラッシュメッセージ -->
+<div class= "flash" style="text-align:center ">
+	<% if flash[:notice] %>
+	  <p><%= flash[:notice] %></p>
+	<% end %>
+</div>
+
+
+<!-- バリデーションメッセージ -->
+
+<% if @delivery_address.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @delivery_address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="index-container" style="width:60%; margin: 50px auto;">
+<!-- 配送先登録フォーム -->
+  <h2>配送先登録/一覧</h2>
+
+  <%= form_for(@delivery_address) do |f| %>
+  <table class="table table-bordered">
+  	    <tr>
+		    <th>郵便番号</th>
+		    <td><%= f.text_field :postcode %></td>
+	    </tr>
+
+	    <tr>
+	    	<th>住所</th>
+	    	<td><%= f.text_field :address %></td>
+	    </tr>
+
+	    <tr>
+	    	<th>宛名</th>
+	    	<td><%= f.text_field :name %></td>
+	    </tr>
+
+    </table>
+         <%= f.submit "登録する", class:"btn btn-primary btn-md" %>
+     <% end %>
+
+
+ <!-- 配送先一覧/編集/削除 -->
+	<table class="table table-bordered" style="margin-top: 50px;">
+	  	<thead>
+		  <tr>
+		    <th>郵便番号</th>
+			<th>住所</th>
+			<th>宛名</th>
+			<th></th>
+		  </tr>
+	    </thead>
+	       <% @delivery_addresses.each do |delivery_address| %>
+		   <tbody>
+			    <tr>
+				  <td><%= delivery_address.postcode %></td>
+
+				  <td><%= delivery_address.address %></td>
+
+				  <td><%= delivery_address.name %></td>
+
+				  <td>
+					<%= link_to "編集する", edit_delivery_address_path(delivery_address), class:"btn btn-primary btn-md" %>
+					<%= link_to "削除する", delivery_address_path(delivery_address), class:"btn btn-danger btn-md", method: :delete %>
+				  </td>
+			    </tr>
+		   </tbody>
+		<% end %>
+
+	</table>
+</div>
+
+
+
+
