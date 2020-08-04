@@ -40,7 +40,12 @@ end
 
 namespace :admins do
     get 'homes/top' => 'homes#top', as:'top'
-    resources :members, only: [:index, :edit, :show, :update]
+    resources :members, only: [:index, :edit, :show, :update] do
+      member do
+        patch :toggle
+      end
+    end
+
     resources :items, only: [:index, :create, :new, :edit, :show, :update]
     resources :orders, only: [:index, :create, :show, :update]
     resources :order_items, only: [:index, :create, :show, :update]
