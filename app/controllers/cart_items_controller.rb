@@ -10,24 +10,35 @@ class CartItemsController < ApplicationController
   end
 
 
-  def create
-   @cart_item = current_member.cart_items.build(cart_item_params)
-   @current_item = CartItem.find_by(item_id: @cart_item.item_id,member_id: @cart_item.member_id)
-   if @current_item.nil
-    if @cart_item.save
-        flash[:success] = 'カートに商品が追加されました！'
-        redirect_to cart_items_path
-    else
-        @carts_items = @member.cart_items.all
-        render 'index'
-        flash[:danger] = 'カートに商品を追加できませんでした。'
-      end
-    else
-       @current_item.quantity += params[:quantity].to_i
-       @current_item.update(cart_item_params)
-       redirect_to cart_items_path
-    end
+  # def create
+  #  @cart_item = current_member.cart_items.build(cart_item_params)
+  #  @current_item = CartItem.find_by(item_id: @cart_item.item_id,member_id: @cart_item.member_id)
+  #  if @current_item.nil
+  #   if @cart_item.save
+  #       flash[:success] = 'カートに商品が追加されました！'
+  #       redirect_to cart_items_path
+  #   else
+  #       @carts_items = @member.cart_items.all
+  #       render 'index'
+  #       flash[:danger] = 'カートに商品を追加できませんでした。'
+  #     end
+  #   else
+  #      @current_item.quantity += params[:quantity].to_i
+  #      @current_item.update(cart_item_params)
+  #      redirect_to cart_items_path
+  #   end
+  # end
+
+def create
+    @cart_items = CartItem.new(cart_item_params)
+    @cart_items.member_id = current_member.id
+    @cart_items.price = @cart_item.item.price * @cart_item.quantity
+    @cart_item.save
+    redirect_to cart_items_path
   end
+
+
+
 
 
 
