@@ -25,7 +25,7 @@
         </div>
         <div class="new-field">
           <h4><%= f.label :商品説明 ,class: "col-xs-3" %>
-          <%= f.text_area :explanation, autofocus: true, autocomplete: "explanation" ,class: "col-xs-8"%></h4>
+          <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" ,class: "col-xs-8"%></h4>
         </div>
         <div class="new-field">
           <h4><%= f.label :ジャンル ,class: "col-xs-3 fix" %>
@@ -36,11 +36,11 @@
         </div>
         <div class="new-field">
           <h4><%= f.label :税抜価格 ,class: "col-xs-3 block"  %>
-          <%= f.text_field :unit_price_without_tax, autofocus: true, autocomplete: "unit_price_without_tax" ,class: "col-xs-8"%></h4>
+          <%= f.text_field :price, autofocus: true, autocomplete: "unit_price_without_tax" ,class: "col-xs-8"%></h4>
         </div>
         <div class="new-field">
           <h4><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %>
-          <%= f.select :sale_status, ["販売中", "販売停止"] ,class: "btn btn-primary"%></h4>
+          <%= f.select :is_status, ["販売中", "販売停止"] ,class: "btn btn-primary"%></h4>
         </div>
         <div class="text-right"><%= f.submit "商品登録" ,class: "btn btn-primary"%></div>
         <% end %>
