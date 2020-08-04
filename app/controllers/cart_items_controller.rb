@@ -5,11 +5,16 @@ class CartItemsController < ApplicationController
 
 
   def index
+    # 会員がカートに入れた商品全て
    @cart_items = @member.cart_items.all
   end
 
   def create
+    # こう記述することで、「current_memberに関連したCartItemクラスの新しいインスタンス」が作成可能。
+    # つまり、cart_items.member_id = current_member.idが済んだ状態で生成されている。
+    # buildはnewと同じ意味で、アソシエーションしながらインスタンスをnewする時に形式的に使われる。
     @cart_item = current_member.cart_items.build(cart_item_params)
+    # 商品idがカートアイテムに関連した商品id、会員idがカートアイテムに関連した会員id の条件に合うデータを若い順に１つだけ取得
     @current_item = CartItem.find_by(item_id: @cart_item.item_id,member_id: @cart_item.member_id)
     # カートに同じ商品がなければ新規追加、あれば既存のデータと合算
     if @current_item.nil?
@@ -22,6 +27,7 @@ class CartItemsController < ApplicationController
         flash[:danger] = 'カートに商品を追加できませんでした。'
       end
     else
+      # 現在のカートアイテムの個数 + ? 数字の文字列を数値オブジェクトに変換するメソッド
       @current_item.quantity += params[:quantity].to_i
       @current_item.update(cart_item_params)
       redirect_to cart_items_path
