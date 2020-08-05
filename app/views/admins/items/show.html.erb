@@ -23,8 +23,8 @@
           <%= @item.genre.name %>
         </h4>
 
-        <h4 style="margin-bottom: 30px;">税別価格
-          <%= @item.price%>円
+        <h4 style="margin-bottom: 30px;">税込価格（税抜価格）
+          <%= (@item.price*1.1).floor%> (<%= @item.price%>) 円
         </h4>
 
         <h4 style="margin-bottom: 30px;">販売ステータス
