@@ -1,2 +1,65 @@
-<h1>注文履歴詳細</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h3>注文履歴詳細</h3><br>
+		<div class="col-xs-6">
+			<h4>注文情報</h4>
+			<table align="left" class="table table-bordered">
+				<tr>
+					<td>注文日</th>
+						<td>今日</td>
+					</tr>
+					<tr>
+						<td>配送先</td>
+						<td>家</td>
+					</tr>
+					<tr>
+						<td>支払方法</td>
+						<td>クレカ</td>
+					</tr>
+					<tr>
+						<td>ステータス</td>
+						<td>いいね！</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-6">
+				<h4>請求情報</h4>
+				<table class="table table-bordered">
+					<tr>
+						<td>商品合計</td>
+						<th>5000</th>
+					</tr>
+					<tr>
+						<td>配送料</td>
+						<th>800</th>
+					</tr>
+					<tr>
+						<td>ご請求額</td>
+						<th>5800</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-9">
+				<h4>注文内容</h4>
+				<table class="table table-bordered">
+					<tr>
+						<th>商品</th>
+						<th>単価（税込み)</th>
+						<th>個数</th>
+						<th>小計</th>
+					</tr>
+					<!-- ここにeach入れる -->
+					<tr>
+						<td>いちご</td>
+						<td>は美味しいよね</td>
+						<td>何個</td>
+						<td>でも食べれる</td>
+					</tr>
+					<!-- ここにend入れる -->
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

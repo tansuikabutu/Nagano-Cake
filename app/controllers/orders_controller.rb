@@ -18,8 +18,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    # 現在ログインしている会員が注文したものを新しいもの順に
-    @orders = current_member.orders.order("created_at DESC")
+    # 現在ログインしている会員が注文したもの(新しいもの順)
+    @orders = Order.all
   end
 
   def new
@@ -46,7 +46,6 @@ class OrdersController < ApplicationController
           count: cart_item.count,
           ordered_price: cart_item.item.price_with_tax,
           order_id: @order.id)
-        
           @order_items.save!
         end
         Delivery.create!(member_id: current_member.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)
