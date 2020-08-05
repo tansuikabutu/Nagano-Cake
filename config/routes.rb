@@ -16,7 +16,7 @@ resources :members, only: [:edit, :show, :update,]
   put "/members/:id/unsubscribe" => "members#unsubscribe_done", as: 'members_unsubscribe_done'
 resources :orders, only: [:index, :create, :show, :new]
   get 'orders/entry' => 'orders#entry', as: 'order_entry'
-  get 'orders/check' => 'orders#check', as: 'order_check'
+  post 'orders/check' => 'orders#check', as: 'order_check'
   get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
 resources :items, only: [:index, :show]
 resources :delivery_addresses, only: [:index, :create, :show, :edit, :update, :destroy]

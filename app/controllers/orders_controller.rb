@@ -23,12 +23,10 @@ class OrdersController < ApplicationController
           @order.last_name_kana = @member.last_name_kana
           @order.first_name_kana = @member.first_name_kana
         when 2
-          @order.postcode = params[:order][:postcode]
-          @order.address = params[:order][:delivery_address]
-          @order.name = params[:order][:name]
+
         when 3
           @order.postcode = params[:order][:postcode]
-          @order.address = params[:order][:send_to_address]
+          @order.address = params[:order][:address]
           @order.name = params[:order][:name]
       end
       @order.save
@@ -66,6 +64,9 @@ class OrdersController < ApplicationController
   end
 
   def check
+    @order = Order.new
+    @cart_items = current_member.cart_items
+    @order.
   end
 
 
