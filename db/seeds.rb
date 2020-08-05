@@ -150,3 +150,32 @@ Item.create!(
  ]
  )
 
+Order.create!(
+[
+  {
+      id: 1,
+      member_id:1,
+      postage: 800,
+      is_payment_method: 0,
+      address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階",
+      postcode: 1500041,
+      name: "山田花子",
+      total_price: 2300,
+      order_status: 0,
+  }
+]
+)
+
+OrderItem.create!(
+[
+  {
+    id: 1,
+    order_id:1,
+    item_id:1,
+    perchase_price: 3100,
+    quantity: 2,
+    make_status: 0,
+  }
+  ]
+)
+

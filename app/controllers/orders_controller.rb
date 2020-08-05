@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def index
+    # 現在ログインしている会員が注文したものを新しいもの順に
     @orders = current_member.orders.order("created_at DESC")
   end
 
@@ -28,7 +29,6 @@ class OrdersController < ApplicationController
 
   # 請求金額の計算と格納
     @order.payment = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.postage
-    
     # オーダーの検証
     unless @order.valid?
       @delivery = Delivery.new
