@@ -45,10 +45,46 @@ Item.create!(
     id: 1,
     genre_id: 1,
     name: "いちごのショートケーキ",
-    introduction: "長野県産のを使用した当店一押しの商品です",
+    introduction: "長野県産の苺を贅沢に使用した当店一押しの商品です",
     price: 1000,
     is_status: 0,
     image: open("./db/images/image1.jpg")
+  },
+  {
+    id: 2,
+    genre_id: 1,
+    name: "抹茶のケーキ",
+    introduction: "長野松本茶店さんから取り寄せた抹茶を贅沢に使用。抹茶好きにはたまらない一品です。",
+    price: 700,
+    is_status: 0,
+    image: open("./db/images/image2.jpg")
+  },
+  {
+    id: 3,
+    genre_id: 2,
+    name: "林檎ぷりん",
+    introduction: "長野県産の林檎をそのままプリンの器に。見た目も可愛い一品です。",
+    price: 600,
+    is_status: 0,
+    image: open("./db/images/image3.jpg")
+  },
+  {
+    id: 4,
+    genre_id: 3,
+    name: "ブルーベリークッキー",
+    introduction: "長野県産のブルーベリーを使用したソフトクッキーです。８枚入りでお届けします。コーヒーのお供にぜひ！",
+    price: 800,
+    is_status: 0,
+    image: open("./db/images/image4.jpg")
+  },
+  {
+    id: 5,
+    genre_id: 2,
+    name: "ティラミス",
+    introduction: "長野安曇野牧場の濃厚マスカルポーネチーズを使用。ほろ苦いコーヒーとフレッシュなマスカルポーネのハーモニーを楽しめる一品。",
+    price: 500,
+    is_status: 0,
+    image: open("./db/images/image5.jpg")
   }
  ]
 )
