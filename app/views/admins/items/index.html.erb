@@ -23,15 +23,12 @@
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admins_items_path(item.id) %></td>
+        <td><%= link_to admins_item_path(item) do %>
+            <%= item.name %>
+            <% end %></td>
         <td><%= "#{item.price}円" %></td>
         <td><%= item.genre.name %></td>
-        <td>
-          <% if item.is_status? %>
-            <span class="badge" style="background:#D52438">販売停止</span>
-          <% else %>
-            <span class="badge" style="background:#8BCE9A">販売中</span>
-          <% end %></td>
+        <td><%= item.is_status%></td>
       </tr>
       <% end %>
     </tbody>
