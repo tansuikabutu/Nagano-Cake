@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
   def index
     # 現在ログインしている会員が注文したもの(新しいもの順)
-    @orders = Order.all
+    @orders = current_member.orders.order("created_at DESC")
   end
 
   def new
@@ -64,8 +64,9 @@ class OrdersController < ApplicationController
   end
 
   private
+ 
   def set_order
-    params.require(:order).permit(:total_price, :is_payment_method, :address, :postcode, :name)
+    params.require(:order).permit(:total_price, :is_payment_method, :address, :postcode, :name, :order_status)
   end
   def set_delivery
     params.require(:order).require(:delivery).permit(:id)

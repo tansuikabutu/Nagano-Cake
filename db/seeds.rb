@@ -157,9 +157,9 @@ Order.create!(
       member_id:1,
       postage: 800,
       is_payment_method: true,
-      address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階",
-      postcode: 1500041,
-      name: "山田花子",
+      address: "北岡県乙西川市馬城寺1-1-1",
+      postcode: 111111,
+      name: "例田一郎",
       total_price: 4510,
       order_status: 0,
   }
