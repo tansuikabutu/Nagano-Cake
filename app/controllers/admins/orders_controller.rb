@@ -35,9 +35,9 @@ def index
 	  @order.update(order_params) #注文ステータスの更新
 
  	if @order.order_status == "入金確認" #注文ステータスが入金確認なら下の事をする
-	     @order_items.update_all(make_status: 1) #製作ステータスを「製作待ちに」　更新
+	     @order_items.update_all(make_status: 1) #製作ステータスを「製作待ちに」更新
 	     end
-  		  redirect_to  admin_order_path(@order) #注文詳細に遷移
+  		  redirect_to admins_order_path(@order) #注文詳細に遷移
   end
 
 

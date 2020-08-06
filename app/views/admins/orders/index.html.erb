@@ -9,11 +9,14 @@
 	      <th>注文</th>
 	      <th>注文ステータス</th>
 	      <!-- 注文履歴詳細に飛べるかの確認 -->
-	     <td><%= link_to "テスト", admins_order_path(@order) %></td>
+	      </tr><% @order.each do |order| %><tr>
+	     <td><%= link_to "テスト", admins_order_path(order) %></td>
+	     <% end %>
         </tr>
+
         <% @order.each do |order| %>
 	    <tr>
-	       <td><%= link_to "order.created_at", admins_order_path(order) %></td>
+	       <td><%= order.created_at %></td>
 	      <td><%= order.member.last_name %><%= order.member.first_name %></td>
 	      <td><%= order.order_status %></td>
 	      <td><%= link_to "注文詳細", admins_order_path(order), class:"btn btn-primary" %></td>
