@@ -1,3 +1,5 @@
+<!-- ９割完成 注文内容を修正する -->
+
 <div class="container">
 	<div class="row">
 		<h3>注文履歴詳細</h3><br>
@@ -27,7 +29,7 @@
 				<table class="table table-bordered">
 					<tr>
 						<td>商品合計</td>
-						<th>5000</th>
+						<th><%= @order.total_price%></th>
 					</tr>
 					<tr>
 						<td>配送料</td>
@@ -35,7 +37,7 @@
 					</tr>
 					<tr>
 						<td>ご請求額</td>
-						<th>5800</th>
+						<th><%= @order.total_price + 800 %></th>
 					</tr>
 				</table>
 			</div>
@@ -51,12 +53,15 @@
 						<th>小計</th>
 					</tr>
 					<!-- ここにeach入れる -->
+					<% @order_item.each do |order_item| %>
 					<tr>
-						<td>いちご</td>
-						<td>は美味しいよね</td>
-						<td>何個</td>
-						<td>でも食べれる</td>
+						<td><%= order_item.item.name %></td>
+						<!-- 商品の単価（税込）を出したい（いちごショート1100円）perchase_priceじゃない気がする -->
+						<td><%= order_item.perchase_price %></td>
+						<td><%= order_item.quantity %></td>
+						<td><%= (order_item.perchase_price*order_item.quantity) %></td>
 					</tr>
+					<% end %>
 					<!-- ここにend入れる -->
 				</table>
 			</div>

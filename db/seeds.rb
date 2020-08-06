@@ -160,7 +160,7 @@ Order.create!(
       address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階",
       postcode: 1500041,
       name: "山田花子",
-      total_price: 2300,
+      total_price: 4510,
       order_status: 0,
   }
 ]
@@ -172,10 +172,18 @@ OrderItem.create!(
     id: 1,
     order_id:1,
     item_id:1,
-    perchase_price: 3100,
+    perchase_price: 1100,
     quantity: 2,
     make_status: 0,
-  }
+  },
+ {
+    id: 2,
+    order_id:1,
+    item_id:2,
+    perchase_price: 770,
+    quantity: 3,
+    make_status: 0,
+  },
   ]
 )
 
