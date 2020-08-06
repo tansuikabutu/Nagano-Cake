@@ -4,9 +4,10 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- has_many :orders
- has_many :cart_items
  has_many :delivery_addresses,dependent: :destroy
+
+ has_many :cart_items,dependent: :destroy
+
  has_many :orders
 
   # バリデーション
@@ -18,10 +19,6 @@ class Member < ApplicationRecord
   validates :address,presence: true
   validates :phone_number,presence: true
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   #退会後のユーザー（is_statusがtrue）はログインできないようにする＝＞is_statusがfalseの人だけログイン可
 
   def active_for_authentication?
