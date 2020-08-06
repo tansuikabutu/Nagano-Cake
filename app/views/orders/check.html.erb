@@ -67,7 +67,7 @@
         <h3>支払方法</h3>
       </div>
       <div class="col-lg-4">
-        
+        <%= @order.is_payment_method %>
       </div>
     </div>
 
@@ -82,14 +82,16 @@
       </div>
     </div>
 
-
+    <%= f.hidden_field :member_id, :value => current_member.id %>
+    <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
+    <%= f.hidden_field :address, :value => "#{@order.address}" %>
+    <%= f.hidden_field :name, :value => "#{@order.name}" %>
   </div>
-</div>
+  <div class="row">
+    <div class="col-lg-10">
+      <%= f.submit "購入を確定する", class: "btn btn-danger btn-lg" %>
+    </div>
+  </div>
 
-
-
-
-
-<% end %>
-</div>
+  <% end %>
 </div>

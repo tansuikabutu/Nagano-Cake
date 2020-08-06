@@ -6,14 +6,17 @@
   <%= form_with(model: @order, local: true, url: {action: 'check'}) do |f| %>
 
   <!-- 支払い方法選択　-->
-  <div class="row space">
+  <div class="row">
 	<h3><%= f.label :支払い方法　%></h3>
-      <label><%= f.radio_button :is_payment_method, true, {checked: true} %> クレジットカード</label><br>
-      <label><%= f.radio_button :is_payment_method, false, {} %> 銀行振込</label>
+  </div>
+
+  <div class="row">
+    <label><%= f.radio_button :is_payment_method, "クレジットカード", checked:"checked" %> クレジットカード</label>
+    <label><%= f.radio_button :is_payment_method, "銀行振込" %> 銀行振込</label>
   </div>
 
   <!-- お届け先選択 -->
-  <div class="row space">
+  <div class="row">
 	<h3><%= f.label :お届け先選択　%></h3>
   </div>
   <!-- 会員の住所 -->

@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
         @order.name = @address.name
       when 3
         @order.postcode = params[:order][:new_add][:postcode]
-        @order.delivery_address = params[:order][:new_add][:delivery_address]
+        @order.address = params[:order][:new_add][:address]
         @order.name = params[:order][:new_add][:name]
       end
   end
