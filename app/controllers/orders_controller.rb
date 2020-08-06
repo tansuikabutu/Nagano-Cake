@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def create
    if current_member.cart_items.exists?
     @order = Order.new(order_params)
-    @order.member.id = current_member.id
+    @order.member_id = current_member.id
 
     # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i
@@ -23,7 +23,9 @@ class OrdersController < ApplicationController
           @order.last_name_kana = @member.last_name_kana
           @order.first_name_kana = @member.first_name_kana
         when 2
-
+          @order.post_code = params[:order][:post_code]
+          @order.address = params[:order][:address]
+          @order.name = params[:order][:name]
         when 3
           @order.postcode = params[:order][:postcode]
           @order.address = params[:order][:address]
@@ -32,8 +34,8 @@ class OrdersController < ApplicationController
       @order.save
 
       # addressで住所モデル検索、該当データなければ新規作成
-      if Address.find_by(address: @order.address).nil?
-        @address = Address.new
+      if DeliveryAddress.find_by(address: @order.address).nil?
+        @address = DeliveryAddress.new
         @address.postcode = @order.postcode
         @address.address = @order.address
         @address.name = @order.name
@@ -47,7 +49,7 @@ class OrdersController < ApplicationController
         order_item.order_id = @order.id
         order_item.item_id = cart_item.item_id
         order_item.quantity = cart_item.quantity
-        order_item.order_price = cart_item.item.price
+        order_item.perchase_price = cart_item.item.price
         order_item.save
         cart_item.destroy #order_itemに情報を移したらcart_itemは消去
       end
