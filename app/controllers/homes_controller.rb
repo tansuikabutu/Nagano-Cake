@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   end
 
   def top
-  	@items = Item.limit(8).offset(4)
-  	@genres = Genre.where(is_status: "有効")
+  	@items = Item.all
+  	@genres = Genre.where(is_status: "false")
   end
 end

@@ -11,13 +11,17 @@
       </thead>
       <tbody>
         <% @genres.each do |genre| %>
-          <tr>
-            <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げてる。パラメーターにはクリックしたジャンルのidを渡してる。 -->
-            <td class="underline"><i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i></td>
-          </tr>
-        <% end %>
+      <% if genre.is_status == "false" %>
+        <tr>
+          <td>
+            <%= link_to genre.name, items_path(genre_id: genre.id), class:"ec-genre-list-item" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
       </tbody>
     </table>
+    </div>
   </div>
 
     <div class="col-xs-9">
@@ -36,19 +40,21 @@
       <!-- オススメ商品表示 -->
       <br>
       <h4 class="recommendation"><i class="fas fa-crown"></i> オススメ商品 <i class="fas fa-crown"></i></h4><br>
-      <div class="row">
-        <div id="multiple-items">
-        <% @items.each do |item| %>
-          <div class="recommendation-items">
-            <%= link_to item_path(item.id) do %>
-              <%= attachment_image_tag item, :image, size: "150x150",  fallback: "no_image.jpg"%><br>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>¥<%= (item.price*1.1).floor %></p>
-          </div>
-        <% end %>
-　　　　　</div>
+      <div class="row mx-auto mt-3">
+        <% @items.last(4).each do |item| %>
+        <div class="mx-auto">
+          <%= link_to item_path(item) do %>
+          <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', size: '200x200', class: "rounded" %><br>
+          <% end %>
+            <div class="row mt-3">
+          <span class="red-border px-3"><%= item.name %></span>
         </div>
+        <div class="row mt-1">
+          <span class="offset-8"><%= (item.price * 1.1).floor %> 円</span>
+        </div>
+      </div>
+    <% end %>
+  </div>
       </div>
     </div>
 
