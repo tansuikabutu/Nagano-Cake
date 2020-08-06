@@ -66,7 +66,25 @@ class OrdersController < ApplicationController
   def check
     @order = Order.new
     @cart_items = current_member.cart_items
-    @order.
+    @order.is_payment_method = params[:order][:is_payment_method]
+    #ボタン選択で引数を調整
+    @add = params[:order][:add].to_i
+    case @add
+      when 1
+        @order.postcode = @member.postcode
+        @order.address = @member.address
+        @order.name = @member.last_name + @member.first_name
+      when 2
+        @da = params[:order][:delivery_address].to_i
+        @address = DeliveryAddress.find(@da)
+        @order.postcode = @address.postcode
+        @order.address = @address.address
+        @order.name = @address.name
+      when 3
+        @order.postcode = params[:order][:new_add][:postcode]
+        @order.delivery_address = params[:order][:new_add][:delivery_address]
+        @order.name = params[:order][:new_add][:name]
+      end
   end
 
 
