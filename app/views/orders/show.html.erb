@@ -6,19 +6,19 @@
 			<table align="left" class="table table-bordered">
 				<tr>
 					<td>注文日</th>
-						<td>今日</td>
+						<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 					</tr>
 					<tr>
 						<td>配送先</td>
-						<td>家</td>
+						<td>〒<%= @order.postcode %><br><%= @order.address %><br><%= @order.name %></td>
 					</tr>
 					<tr>
 						<td>支払方法</td>
-						<td>クレカ</td>
+						<td><%= @order.is_payment_method %></td>
 					</tr>
 					<tr>
 						<td>ステータス</td>
-						<td>いいね！</td>
+						<td><%= @order.order_status %></td>
 					</tr>
 				</table>
 			</div>

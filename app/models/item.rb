@@ -7,7 +7,7 @@ class Item < ApplicationRecord
 	has_many :order_items
 	belongs_to :genre
 
-	enum is_status: {販売中: 0,販売停止中: 1}
+	enum is_status: {販売中: true,販売停止中: false}
 	validates :name, presence: true
 	validates :introduction, length: { maximum: 200 }
 
