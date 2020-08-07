@@ -5,6 +5,7 @@ before_action :authenticate_admin!
 def index
 
    @orders = Order.all
+   # @order_items = @order.order_items
 
 	# 遷移元(直前)のcontrollerやaction名を取得する
     # @path = Rails.application.routes.recognize_path(request.referer)
@@ -27,6 +28,7 @@ def index
 
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    
   end
 
 

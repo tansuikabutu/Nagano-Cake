@@ -5,17 +5,17 @@
       <!-- 購入詳細情報 -->
       <table>
          <tr>
-          <th class= "order-show">購入者</th>
-          <td><%= @order.member.last_name %> <%= @order.member.first_name %></td>
-
+            <th>購入者</th>
+            <td><%= @order.member.last_name %> <%= @order.member.first_name %></td>
          </tr>
+         
          <tr>
-            <th class= "order-show">配送先</th>
+            <th>配送先</th>
             <td>〒<%= @order.postcode %><%= @order.address %>
               <br><%= @order.name %></td>
-        </tr>
+         </tr>
         <tr>
-          <th class= "order-show">支払い方法</th>
+          <th>支払い方法</th>
           <td><%= @order.is_payment_method %></td>
         </tr>
 
@@ -63,8 +63,10 @@
       </div>
 
       <div class="total">
+         
          <h4>商品合計     <%= @order.total_price %>円</h4>
          <h4>送料　　　    <%= @order.postage %>円</h4>
+         <h4>請求合計金額  円</h4>    <%#= (@order.total_price+@order.postage) %>
          
       </div>
   </div>
