@@ -4,8 +4,8 @@ before_action :authenticate_admin!
 
 def index
 
-   # @orders = Order.all
-   
+   @orders = Order.all
+
 	# 遷移元(直前)のcontrollerやaction名を取得する
     # @path = Rails.application.routes.recognize_path(request.referer)
     #  # 指定したcontrollerとaction名が正しい時、与えられた条件にマッチするものを取得する。
@@ -15,12 +15,6 @@ def index
     #    @order = Order.where(created_at: Time.zone.today.all_day).page(params[:page]).per(7)
     # else
     #    @order = Order.page(params[:page]).per(7)
-    # end
-
-    # if params[:day]
-    #   @orders = Order.created_today
-    # else
-       @orders = Order.all
     # end
 
 
@@ -52,7 +46,9 @@ def index
 private
 
   def order_params
-  	params.require(:order).permit(:order_status)
+  	params.require(:order).permit(:order_status,:name,:postcode,:address,:is_payment_method,:postage,:total_price,:created_at, :update_at,
+      order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
+      )
   end
 
 
