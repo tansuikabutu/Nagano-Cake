@@ -153,32 +153,56 @@ Item.create!(
 Order.create!(
 [
   {
-id: 1,
-member_id: 1,
-postage:  800,
-is_payment_method: false,
-address: '北岡県乙西川市馬城寺1-1-1',
-postcode: 111111,
-name: '例田 二郎',
-total_price: 1200,
-order_status:  0,
-}
-]
+      id: 1,
+      member_id:1,
+      postage: 800,
+      is_payment_method: true,
+      address: "北岡県乙西川市馬城寺1-1-1",
+      postcode: 111111,
+      name: "例田一郎",
+      total_price: 4510,
+      order_status: 0,
+  },
+  {
+      id: 2,
+      member_id: 2,
+      postage:  800,
+      is_payment_method: false,
+      address: '北岡県乙西川市馬城寺1-1-1',
+      postcode: 111111,
+      name: '例田 二郎',
+      total_price: 1200,
+      order_status:  0,
+   }
+ ]
 )
 
 OrderItem.create!(
-[
-  {
-id: 1,
-order_id: 1,
-item_id: 1,
-perchase_price: 2000,
-quantity: 1,
-make_status: 0,
- }
-]
-)
-
-
-
+  [
+    {
+      id: 1,
+      order_id:1,
+      item_id:1,
+      perchase_price: 1100,
+      quantity: 2,
+      make_status: 0,
+    },
+    {
+      id: 2,
+      order_id:1,
+      item_id:2,
+      perchase_price: 770,
+      quantity: 3,
+      make_status: 0,
+    },
+    {
+      id: 3,
+      order_id: 2,
+      item_id: 1,
+      perchase_price: 2000,
+      quantity: 1,
+      make_status: 0,
+    }
+  ]
+  )
 

@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
       render :thanks
     else
       redirect_to member_top_path
-　　　flash[:danger] = 'カートが空です。'
+    flash[:danger] = 'カートが空です。'
     end
    end
 
@@ -89,19 +89,28 @@ class OrdersController < ApplicationController
       end
   end
 
+  def index
+    # 現在ログインしている会員が注文したもの(新しいもの順)
+    @orders = current_member.orders.order("created_at DESC")
+  end
 
   def new
     @order = Order.new
+    @delivery = Delivery.new
   end
 
 
+
   def show
+    @order = Order.find(params[:id])
+    @order_item = @order.order_items
   end
 
   def thanks
   end
 
   private
+
   def set_member
     @member = current_member
   end
@@ -111,6 +120,4 @@ class OrdersController < ApplicationController
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
    end
-
-
-end
+  end
