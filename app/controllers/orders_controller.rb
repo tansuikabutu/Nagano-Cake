@@ -1,73 +1,106 @@
 class OrdersController < ApplicationController
+  #管理者とログインユーザーのみ閲覧可
+  before_action :authenticate_member!
+  before_action :set_member
+
+  def index
+    @orders = @member.orders
+  end
+
+  def create
+   if current_member.cart_items.exists?
+    @order = Order.new(order_params)
+    @order.member_id = current_member.id
+    @order.postage = 800
+
+      # addressで住所モデル検索、該当データなければ新規作成
+      if DeliveryAddress.find_by(address: @order.address).nil?
+        @address = DeliveryAddress.new
+        @address.postcode = @order.postcode
+        @address.address = @order.address
+        @address.name = @order.name
+        @address.member_id = current_member.id
+        @address.save
+      end
+
+      # cart_itemsの内容をorder_itemsに新規登録
+      current_member.cart_items.each do |cart_item|
+        order_item = @order.order_items.build
+        order_item.order_id = @order.id
+        order_item.item_id = cart_item.item_id
+        order_item.quantity = cart_item.quantity
+        order_item.perchase_price = cart_item.item.price*1.1
+        order_item.save
+        cart_item.destroy #order_itemに情報を移したらcart_itemは消去
+      end
+      render :thanks
+    else
+      redirect_to member_top_path
+    flash[:danger] = 'カートが空です。'
+    end
+   end
+
+
+
   def entry
-    @order = current_member.orders.build(set_order)
-    @order.postcode.insert(3, "-") if @order.postcode.present? # 郵便番号をハイフンありのフォーマットに変更（破壊的に変更）
-    case params[:delivery_address_type]
-    when "ご自身の住所"
-      @order.postcode = current_member.postcode
-      @order.delivery_address = current_member.address
-      @order.delivery_name = current_member.last_name + current_member.first_name
-    when "登録済住所から選択"
-      @order.postcode = Delivery.find(set_delivery[:id]).postcode
-      @order.delivery_address = Delivery.find(set_delivery[:id]).address
-      @order.delivery_name = Delivery.find(set_delivery[:id]).name
-    when "新しいお届け先"
   end
 
   def check
+    @order = Order.new(order_params)
+    @cart_items = current_member.cart_items
+    
+
+    #ボタン選択で引数を調整
+    @add = params[:order][:add].to_i
+    case @add
+      when 1
+        @order.postcode = @member.postcode
+        @order.address = @member.address
+        @order.name = @member.last_name + @member.first_name
+      when 2
+        @da = params[:order][:delivery_address].to_i
+        @address = DeliveryAddress.find(@da)
+        @order.postcode = @address.postcode
+        @order.address = @address.address
+        @order.name = @address.name
+      when 3
+        @order.postcode = params[:order][:new_add][:postcode]
+        @order.address = params[:order][:new_add][:address]
+        @order.name = params[:order][:new_add][:name]
+    end
   end
 
   def index
+    # 現在ログインしている会員が注文したもの(新しいもの順)
     @orders = current_member.orders.order("created_at DESC")
   end
 
   def new
     @order = Order.new
-    @delivery = Delivery.new
+
   end
 
-  # 請求金額の計算と格納
-    @order.payment = current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} + @order.postage
-    
-    # オーダーの検証
-    unless @order.valid?
-      @delivery = Delivery.new
-      render :new
-    end
-  end
 
-  def create
-    @order = current_member.orders.build(set_order)
-    if @order.save!
-      current_member.cart_items.each do |cart_item|
-        # 注文商品テーブルにレコードを追加する
-        @order_items = OrderItem.new(
-          item_id: cart_item.item.id,
-          count: cart_item.count,
-          ordered_price: cart_item.item.price_with_tax,
-          order_id: @order.id)
-        
-          @order_items.save!
-        end
-        Delivery.create!(member_id: current_member.id, zip_code: @order.zip_code, address: @order.delivery_address, name: @order.delivery_name)
-        # オーダー確定後ユーザーのカートを削除する
-        current_member.cart_items.destroy_all
-     end
-     redirect_to thanks_orders_path
-  end
 
   def show
     @order = Order.find(params[:id])
+    @order_item = @order.order_items
   end
 
   def thanks
   end
 
   private
-  def set_order
-    params.require(:order).permit(:total_price, :is_payment_method, :address, :postcode, :name)
+
+  def set_member
+    @member = current_member
   end
-  def set_delivery
-    params.require(:order).require(:delivery).permit(:id)
+
+  def order_params
+    params.require(:order).permit(:member_id,
+      :postage, :total_price, :is_payment_method, :postcode, :address, :name, :status, :created_at, :update_at,
+      order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
+      )
   end
+
 end

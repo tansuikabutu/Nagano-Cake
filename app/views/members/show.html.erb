@@ -1,100 +1,56 @@
-<div class="col-lg-9 offset-lg-3 space">
-	<div class="container">
-		<h2>マイページ</h2>
-	</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <h2><%= current_member.last_name %> <%= current_member.first_name %>さんの会員情報詳細</h2>
 
-	<!-- 会員情報 -->
-	<div class="container">
-	  <div class="row">
-	    <div class="col-lg-2"><h3>登録情報</h3></div>
-		  <div class="col-lg-1">
-		    <%= link_to "編集", edit_member_path, class: "btn btn-danger" %>
-		  </div>
-		  <div class="col-lg-1">
-            <%= link_to "パスワード変更", edit_member_registration_path, class: 'btn btn-danger' %>
-          </div>
-      </div>
+      <!-- 会員情報 -->
+      <table class="table">
+      <tr>
+        <th><h4>氏名</h4></th>
+        <td><%= current_member.last_name %> <%= current_member.first_name %></td>
+      </tr>
 
+      <tr>
+        <th><h4>カナ</h4></th>
+        <td><%= current_member.last_name_kana %> <%= current_member.first_name_kana %></td>
+      </tr>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>氏名</h4>
-          </div>
-          <div class="col-lg-1">
-          	<%= current_member.last_name %> 
-          </div>
-          <div class="col-lg-1">
-          	<%= current_member.first_name %>
-          </div>
-        </div>
+      <tr>
+        <th><h4>郵便番号</h4></th>
+        <td>〒<%= current_member.postcode %></td>
+      </tr>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>カナ</h4>
-          </div>
-          <div class="col-lg-1">
-          	<%= current_member.last_name_kana %>
-          </div>
-          <div class="col-lg-1">
-          	<%= current_member.first_name_kana %>
-          </div>
-        </div>
+      <tr>
+        <th><h4>住所</h4></th>
+        <td><%= current_member.address %></td>
+      </tr>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>郵便番号</h4>
-          </div>
-          <div class="col-lg-9">
-          〒<%= current_member.postcode %>
-          </div>
-        </div>
+      <tr>
+        <th><h4>電話番号</h4></th>
+        <td><%= current_member.phone_number %></td>
+      </tr>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>住所</h4>
-          </div>
-          <div class="col-lg-9">
-            <%= current_member.address %>
-           </div>
-        </div>
+      <tr>
+        <th><h4>Eメール</h4></th>
+        <td><%= current_member.email %></td>
+      </tr>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>電話番号</h4>
-          </div>
-          <div class="col-lg-9">
-          	<%= current_member.phone_number %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3">
-            <h4>Eメール</h4>
-          </div>
-          <div class="col-lg-9">
-          	<%= current_member.email %>
-          </div>
-        </div>
-      </div>
 
       <!-- その他のリンク -->
-      <div class="container space">
-      <div class="row">
-        <div class="col-lg-3">
-          <h4>配送先</h4>
-        </div>
-        <div class="col-lg-9">
-          <%= link_to '一覧を見る', delivery_addresses_path, class: 'btn btn-danger' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3">
-          <h4>注文履歴</h4>
-        </div>
-        <div class="col-lg-9">
-          <%= link_to '一覧を見る', orders_path, class: 'btn btn-danger' %>
-        </div>
-      </div>
+      <tr>
+        <th><h4>配送先</h4></th>
+        <td><%= link_to '一覧を見る', delivery_addresses_path, class: 'btn btn-danger' %></td>
+      </tr>
+      </table>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1">
+          <%= link_to "編集する", edit_member_path, class: "btn btn-danger" %>
+    </div>
+    <div class="col-xs-4">
+          <%= link_to '注文履歴一覧を見る', orders_path, class: 'btn btn-danger' %>
+    </div>
+  </div>
 </div>
+

@@ -1,2 +1,37 @@
-<h1>Admins::Members#index</h1>
-<p>Find me in app/views/admins/members/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>会員一覧</h2>
+	    <!--会員一覧 -->
+		  <table class="table table-hover">
+		  	<thead>
+		  	  <tr class="active">
+		        <th>会員ID</th>
+		        <th>氏名</th>
+		        <th>フリガナ</th>
+		        <th>メールアドレス</th>
+		        <th>ステータス</th>
+		        <th></th>
+		        <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+              <% @members.each do |member| %>
+			    <tr>
+			    <td><%= member.id %></td>
+			    <td><%= member.last_name %> <%= member.first_name %></td>
+			    <td><%= member.last_name_kana %> <%= member.first_name_kana %></td>
+			    <td><%= member.email %></td>
+			    <% if member.is_status == false %>
+                  <td><span class="badge" style="background:#8bce9a;">有効会員</span></td>
+                <% else %>
+                  <td><span class="badge" style="background:#d72238;">退会済み</span></td>
+                <% end %>
+		        <td><%= link_to "詳細", admins_member_path(member.id) ,class: "btn btn-primary" %></td>
+		        <td><%= link_to "編集", edit_admins_member_path(member.id) ,class: "btn btn-success" %></td>
+		        </tr>
+			  <% end %>
+		    </table>
+	</div>
+  </div>
+</div>

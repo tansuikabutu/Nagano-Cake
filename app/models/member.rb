@@ -6,6 +6,10 @@ class Member < ApplicationRecord
 
  has_many :delivery_addresses,dependent: :destroy
 
+ has_many :cart_items,dependent: :destroy
+
+ has_many :orders
+
   # バリデーション
   validates :first_name,presence: true
   validates :first_name_kana,presence: true
@@ -14,7 +18,6 @@ class Member < ApplicationRecord
   validates :postcode,presence: true
   validates :address,presence: true
   validates :phone_number,presence: true
-
 
   #退会後のユーザー（is_statusがtrue）はログインできないようにする＝＞is_statusがfalseの人だけログイン可
 
