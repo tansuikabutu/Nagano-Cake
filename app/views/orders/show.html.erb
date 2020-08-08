@@ -1,2 +1,70 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<!-- ９割完成 注文内容を修正する -->
+
+<div class="container">
+	<div class="row">
+		<h3>注文履歴詳細</h3><br>
+		<div class="col-xs-6">
+			<h4>注文情報</h4>
+			<table align="left" class="table table-bordered">
+				<tr>
+					<td>注文日</th>
+						<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+					</tr>
+					<tr>
+						<td>配送先</td>
+						<td>〒<%= @order.postcode %><br><%= @order.address %><br><%= @order.name %></td>
+					</tr>
+					<tr>
+						<td>支払方法</td>
+						<td><%= @order.is_payment_method %></td>
+					</tr>
+					<tr>
+						<td>ステータス</td>
+						<td><%= @order.order_status %></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-6">
+				<h4>請求情報</h4>
+				<table class="table table-bordered">
+					<tr>
+						<td>商品合計</td>
+						<th><%= @order.total_price%></th>
+					</tr>
+					<tr>
+						<td>配送料</td>
+						<th>800</th>
+					</tr>
+					<tr>
+						<td>ご請求額</td>
+						<th><%= @order.total_price + 800 %></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-9">
+				<h4>注文内容</h4>
+				<table class="table table-bordered">
+					<tr>
+						<th>商品</th>
+						<th>単価（税込み)</th>
+						<th>個数</th>
+						<th>小計</th>
+					</tr>
+					<!-- ここにeach入れる -->
+					<% @order_item.each do |order_item| %>
+					<tr>
+						<td><%= order_item.item.name %></td>
+						<!-- 商品の単価（税込）を出したい（いちごショート1100円）perchase_priceじゃない気がする -->
+						<td><%= order_item.perchase_price %></td>
+						<td><%= order_item.quantity %></td>
+						<td><%= (order_item.perchase_price*order_item.quantity) %></td>
+					</tr>
+					<% end %>
+					<!-- ここにend入れる -->
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
