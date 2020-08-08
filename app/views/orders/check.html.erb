@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= sum_all %>円</td>
+          <td><%= @total_price %>円</td>
         </tr>
         <tr>
           <th>ご請求額</th>
@@ -86,6 +86,8 @@
     <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
     <%= f.hidden_field :address, :value => "#{@order.address}" %>
     <%= f.hidden_field :name, :value => "#{@order.name}" %>
+
+
   </div>
   <div class="row">
     <div class="col-lg-10">

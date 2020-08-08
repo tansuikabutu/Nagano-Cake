@@ -19,8 +19,6 @@ def index
   end
 
 
-
-
   def show
 
     @order = Order.find(params[:id])
@@ -46,7 +44,6 @@ private
   def order_params
   	params.require(:order).permit(:order_status)
   end
-
 
 
 end

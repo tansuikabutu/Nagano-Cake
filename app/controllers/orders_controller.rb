@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i
       case @add
-        # 会員自信の配送先
+        # 会員自身の配送先
         when 1
           @order.postcode = @member.postcode
           @order.address = @member.address
@@ -116,10 +116,13 @@ class OrdersController < ApplicationController
   def set_member
     @member = current_member
   end
-   def order_params
+
+  def order_params
     params.require(:order).permit(
       :postage, :total_price, :is_payment_method, :postcode, :address, :name, :status, :created_at, :update_at,
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
-   end
   end
+
+
+end
