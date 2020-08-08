@@ -3,7 +3,7 @@ class HomesController < ApplicationController
   end
 
   def top
-  	@items = Item.all
-  	@genres = Genre.where(is_status: "false")
+  	@genres = Genre.all # ジャンルの有効無効ステータスが有効のものだけ探す/除外検索
+    @items = Item.limit(3)
   end
 end

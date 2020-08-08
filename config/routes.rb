@@ -18,7 +18,9 @@ resources :orders, only: [:index, :create, :show]
   get 'orders/entry' => 'orders#entry', as: 'order_entry'
   get 'orders/check' => 'orders#check', as: 'order_check'
   get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
-resources :items, only: [:index, :show]
+resources :items, only: [:index, :show] do
+  get :search, on: :collection
+end
 resources :delivery_addresses, only: [:index, :create, :show, :edit, :update, :destroy]
 resources :genres, only: [:show]
 
