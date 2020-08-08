@@ -96,7 +96,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @delivery = Delivery.new
   end
 
 
