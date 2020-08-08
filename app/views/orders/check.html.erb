@@ -51,7 +51,7 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= sum_all %>円</td>
+          <td><%= @total_price %>円</td>
         </tr>
         <tr>
           <th>ご請求額</th>
@@ -90,6 +90,7 @@
     <%= f.hidden_field :total_price, :value => sum_all %>
     <%= f.hidden_field :is_payment_method, :value => @order.is_payment_method %>
 
+
   </div>
   <div class="row">
     <div class="col-lg-10">
@@ -97,5 +98,5 @@
     </div>
   </div>
 
-  <% end %>
+　<% end %>
 </div>

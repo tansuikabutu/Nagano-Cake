@@ -11,8 +11,6 @@ def index
 
   end
 
-
-
   def show
 
     @order = Order.find(params[:id])
@@ -44,7 +42,6 @@ private
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
   end
-
 
 
 end
