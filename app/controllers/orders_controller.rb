@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
    if current_member.cart_items.exists?
     @order = Order.new(order_params)
     @order.member_id = current_member.id
+    @order.postage = 800
 
     # 住所のラジオボタン選択に応じて引数を調整
       @add = params[:order][:add].to_i
@@ -31,6 +32,7 @@ class OrdersController < ApplicationController
           @order.address = params[:order][:address]
           @order.name = params[:order][:name]
       end
+      
       @order.save
 
       # addressで住所モデル検索、該当データなければ新規作成
@@ -66,9 +68,10 @@ class OrdersController < ApplicationController
   end
 
   def check
-    @order = Order.new
+    @order = Order.new(order_params)
     @cart_items = current_member.cart_items
-    @order.is_payment_method = params[:order][:is_payment_method]
+    
+
     #ボタン選択で引数を調整
     @add = params[:order][:add].to_i
     case @add
@@ -87,6 +90,7 @@ class OrdersController < ApplicationController
         @order.address = params[:order][:new_add][:address]
         @order.name = params[:order][:new_add][:name]
       end
+
   end
 
   def index
@@ -96,6 +100,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+
   end
 
 
@@ -114,9 +119,12 @@ class OrdersController < ApplicationController
     @member = current_member
   end
    def order_params
-    params.require(:order).permit(
+    params.require(:order).permit(:member_id,
       :postage, :total_price, :is_payment_method, :postcode, :address, :name, :status, :created_at, :update_at,
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
    end
+
+
+
   end

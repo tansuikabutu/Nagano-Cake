@@ -86,6 +86,10 @@
     <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
     <%= f.hidden_field :address, :value => "#{@order.address}" %>
     <%= f.hidden_field :name, :value => "#{@order.name}" %>
+    <%= f.hidden_field :postage, :value => 800 %>
+    <%= f.hidden_field :total_price, :value => sum_all %>
+    <%= f.hidden_field :is_payment_method, :value => @order.is_payment_method %>
+
   </div>
   <div class="row">
     <div class="col-lg-10">
