@@ -63,11 +63,11 @@
       </div>
 
       <div class="total">
-         
+
          <h4>商品合計     <%= @order.total_price %>円</h4>
-         <h4>送料　　　    <%= @order.postage %>円</h4>
-         <h4>請求合計金額  円</h4>    <%#= (@order.total_price+@order.postage) %>
-         
+         <h4>送料　　　   <%= @order.postage %>円</h4>
+         <h4>請求合計金額 <%= (@order.total_price+@order.postage) %> 円 </h4>
+
       </div>
   </div>
 

@@ -9,4 +9,8 @@ class Order < ApplicationRecord
 
 	enum is_payment_method: { クレジットカード: true, 銀行振込: false }
 
+    validates :is_payment_method , presence: true
+    validates :total_price , presence: true
+    validates :postage , presence: true
+
 end
