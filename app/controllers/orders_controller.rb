@@ -128,6 +128,3 @@ class OrdersController < ApplicationController
       )
    end
   end
-
-
-end
