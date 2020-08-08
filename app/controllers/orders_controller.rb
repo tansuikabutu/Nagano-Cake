@@ -13,31 +13,6 @@ class OrdersController < ApplicationController
     @order.member_id = current_member.id
     @order.postage = 800
 
-    # 住所のラジオボタン選択に応じて引数を調整
-      @add = params[:order][:add].to_i
-      case @add
-        # 会員自身の配送先
-        when 1
-          @order.postcode = @member.postcode
-          @order.address = @member.address
-          @order.last_name = @member.last_name
-          @order.first_name = @member.first_name
-          @order.last_name_kana = @member.last_name_kana
-          @order.first_name_kana = @member.first_name_kana
-        #delivery_addressの配送先
-        when 2
-          @order.post_code = params[:order][:post_code]
-          @order.address = params[:order][:address]
-          @order.name = params[:order][:name]
-        #新規配送先
-        when 3
-          @order.postcode = params[:order][:postcode]
-          @order.address = params[:order][:address]
-          @order.name = params[:order][:name]
-      end
-      
-      @order.save
-
       # addressで住所モデル検索、該当データなければ新規作成
       if DeliveryAddress.find_by(address: @order.address).nil?
         @address = DeliveryAddress.new
@@ -54,7 +29,7 @@ class OrdersController < ApplicationController
         order_item.order_id = @order.id
         order_item.item_id = cart_item.item_id
         order_item.quantity = cart_item.quantity
-        order_item.perchase_price = cart_item.item.price
+        order_item.perchase_price = cart_item.item.price*1.1
         order_item.save
         cart_item.destroy #order_itemに情報を移したらcart_itemは消去
       end
@@ -121,13 +96,11 @@ class OrdersController < ApplicationController
     @member = current_member
   end
 
-   def order_params
+  def order_params
     params.require(:order).permit(:member_id,
       :postage, :total_price, :is_payment_method, :postcode, :address, :name, :status, :created_at, :update_at,
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
-   end
   end
-
 
 end

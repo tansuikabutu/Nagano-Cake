@@ -51,11 +51,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= @total_price %>円</td>
+          <td><%= sum_all %>円</td>
         </tr>
         <tr>
           <th>ご請求額</th>
-          <td><% billling_amount = sum_all + 800.to_i %>
+          <td><% billling_amount = sum_all + 800 %>
               <%= billling_amount.to_i %>円
           </td>
         </tr>
