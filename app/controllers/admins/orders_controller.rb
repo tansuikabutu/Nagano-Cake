@@ -4,19 +4,16 @@ before_action :authenticate_admin!
 
 def index
 
-   
-   @orders = Order.all
-   # @order = Order.find(params[:id])
-   # @order_items = @order.order_items
+   @orders = Order.all.order(created_at: :desc) #全ての注文データーを上から注文順に表示して取得する。
 
   end
 
+
+
   def show
 
-    @order = Order.find(params[:id])
-    @order_items = @order.order_items
-
-
+    @order = Order.find(params[:id]) #注文詳細の特定
+    @order_items = @order.order_items #注文から紐付く商品の取得
 
 
   end
