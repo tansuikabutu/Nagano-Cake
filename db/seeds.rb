@@ -39,6 +39,7 @@ Genre.create!(
 
 
 
+
  Member.create!(
  [
   {
