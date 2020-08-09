@@ -4,6 +4,7 @@ class Admins::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
     @items = Item.page(params[:page]).per(10)
   end
 
@@ -13,6 +14,7 @@ class Admins::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @genre =Genre.find(@item.genre_id)
   end
 
   def create
