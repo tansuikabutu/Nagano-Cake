@@ -4,7 +4,10 @@
   </div>
   <div class="row today-order">
     <br>
+
     <p>本日の注文件数:　<%= link_to @orders.count, admins_orders_path%> 件</p>
+
+   
     <br>
     <br>
     <%= link_to "注文履歴一覧", admins_orders_path, class:"btn btn-primary" %>

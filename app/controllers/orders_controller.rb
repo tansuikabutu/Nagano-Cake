@@ -70,16 +70,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def index
-    # 現在ログインしている会員が注文したもの(新しいもの順)
-    @orders = current_member.orders.order("created_at DESC")
-  end
-
   def new
     @order = Order.new
 
   end
-
 
 
   def show
@@ -101,6 +95,6 @@ class OrdersController < ApplicationController
       :postage, :total_price, :is_payment_method, :postcode, :address, :name, :status, :created_at, :update_at,
       order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
       )
+   end
   end
 
-end
