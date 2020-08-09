@@ -17,8 +17,6 @@ def index
     @order_items = @order.order_items
 
 
-
-
   end
 
 
