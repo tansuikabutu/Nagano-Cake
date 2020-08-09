@@ -6,6 +6,7 @@ class HomesController < ApplicationController
   	@genres = Genre.all # ジャンルの有効無効ステータスが有効のものだけ探す/除外検索
     @items = Item.limit(3)
 
+   #トップ画面に行く時、adminとmemberそれぞれのトップに飛ぶ
     if admin_signed_in?
       redirect_to admins_top_path # ログイン済みのトップ画面
     else

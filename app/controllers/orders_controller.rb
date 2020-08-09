@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
       end
       render :thanks
     else
-      redirect_to member_top_path
-    flash[:danger] = 'カートが空です。'
+      redirect_to cart_items_path, danger: "カートに商品を入れてください"
     end
    end
 
