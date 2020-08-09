@@ -2,44 +2,41 @@
   <div class="row">
    <div class="col-xs-11">
 
-    <div class='col-lg-10 offset-lg-1 space'>
+        <h3>注文情報入力</h3>
 
-      <h3>注文情報入力</h3>
+      <%= form_with(model: @order, local: true, url: {action: 'check'}) do |f| %>
+
+      <!-- 支払い方法選択-->
+      <div class="row">
+       <h4><%= f.label :支払方法%></h4>
+     </div>
+
+     <div class="row">
+      <label style="margin-left: 40px;"><%= f.radio_button :is_payment_method, "クレジットカード", checked:"checked" %> クレジットカード</label><br>
+      <label style="margin-left: 40px;"><%= f.radio_button :is_payment_method, "銀行振込" %> 銀行振込</label>
     </div>
 
-    <%= form_with(model: @order, local: true, url: {action: 'check'}) do |f| %>
-
-    <!-- 支払い方法選択-->
+    <!-- お届け先選択 -->
     <div class="row">
-     <h4><%= f.label :支払方法%></h4>
+     <h4><%= f.label :お届け先選択%></h4>
    </div>
-
+   <!-- 会員の住所 -->
    <div class="row">
-    <label style="margin-left: 40px;"><%= f.radio_button :is_payment_method, "クレジットカード", checked:"checked" %> クレジットカード</label><br>
-    <label style="margin-left: 40px;"><%= f.radio_button :is_payment_method, "銀行振込" %> 銀行振込</label>
+    <p>
+     <label style="margin-left: 40px;"><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
+     <div style="margin-left: 70px;"> <%= @member.postcode %>
+      <%= @member.address %><br>
+      <%= @member.last_name %> <%= @member.first_name %></div>
+    </p>
   </div>
 
-  <!-- お届け先選択 -->
-  <div class="row">
-   <h4><%= f.label :お届け先選択%></h4>
- </div>
- <!-- 会員の住所 -->
- <div class="row">
-  <p>
-   <label style="margin-left: 40px;"><%= f.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
-   <div style="margin-left: 70px;"> <%= @member.postcode %>
-    <%= @member.address %><br>
-    <%= @member.last_name %> <%= @member.first_name %></div>
-  </p>
-</div>
-
-<!-- 登録済み配送先住所 -->
-<div class="row space-sm">
-  <label style="margin-left: 40px;">
-    <%= f.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label><br>
-    <div style="margin-left: 70px;">
-      <%= f.collection_select :delivery_address, @member.delivery_addresses, :id, :full_address %><br><br>
-    </div>
+  <!-- 登録済み配送先住所 -->
+  <div class="row space-sm">
+      <label style="margin-left: 40px;">
+        <%= f.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label><br>
+      <div style="margin-left: 70px;">
+        <%= f.collection_select :delivery_address, @member.delivery_addresses, :id, :full_address %><br><br>
+      </div>
   </div>
 
   <!-- 新しい住所 -->
@@ -60,14 +57,14 @@
 
       <div class="form-group row">
         <label for="text3a" class="col-sm-3 col-form-label" style="margin-left: 60px;">住所</label>
-        <div class="col-sm-7">
+         <div class="col-sm-7">
           <%= na.text_field :address, class: 'form-control' %>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="text3a" class="col-sm-3 col-form-label" style="margin-left: 60px;">宛名</label>
-        <div class="col-sm-4">
+         <div class="col-sm-4">
           <%= na.text_field :name, class: 'form-control' %>
         </div>
       </div>
@@ -82,7 +79,7 @@
     </div>
   </div>
   <% end %>
-
+</div>
 </div>
 </div>
 </div>
