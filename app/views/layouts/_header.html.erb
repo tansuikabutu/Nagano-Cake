@@ -6,7 +6,7 @@
     <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
       <!-- 管理者 -->
       <ul class="nav navbar-nav navbar-right">
-        <!--検索窓（member）orメッセージ（admin）-->
+        <!--検索窓（admin）orメッセージ（member）-->
           <% if member_signed_in? %>
             <p>ようこそ! <%= current_member.last_name %><%= current_member.first_name %>さん</p>
           <% elsif admin_signed_in? %>
