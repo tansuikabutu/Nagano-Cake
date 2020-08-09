@@ -35,9 +35,7 @@ def index
 private
 
   def order_params
-  	params.require(:order).permit(:order_status,:name,:postcode,:address,:is_payment_method,:postage,:total_price,:created_at, :update_at,
-      order_items_attributes: [:order_id, :item_id, :quantity, :purchase_price, :make_status]
-      )
+  	params.require(:order).permit(:order_status)
   end
 
 
