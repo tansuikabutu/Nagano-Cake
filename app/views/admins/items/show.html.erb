@@ -28,7 +28,7 @@
         </h4>
 
         <h4 style="margin-bottom: 30px;">販売ステータス
-          <%= @item.is_status%>
+          <%= @item.is_status ? '販売中' : '売切れ' %>
         </h4>
 
         <%= button_to '編集する',edit_admins_item_url, method: :get ,class: "btn btn-primary ", style: "margin-left:70%;"%>

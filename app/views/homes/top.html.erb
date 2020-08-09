@@ -2,23 +2,18 @@
 
   <div class="row">
     <!-- ジャンル検索サイドバー -->
-    <div class="col-xs-2">
-    <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
-          <th class="active text-center"><h5 class="genre_said">ジャンル検索</h5></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genres.each do |genre| %>
-          <tr>
+      <div class="col-xs-2">
+        <div class="panel panel-default" style="margin-top: 20px;">
+          <div class="panel-heading">
+            <h5 class="panel-title">ジャンル検索</h5></div>
+            <% @genres.each do |genre| %>
+              <tr>
             <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げてる。パラメーターにはクリックしたジャンルのidを渡してる。 -->
-            <td class="underline"><i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+                <td class="underline"><i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i></td>
+              </tr>
+            <% end %>
+        </div>
+      </div>
 
     <div class="col-xs-9">
       <!-- 画像背景 -->
@@ -34,26 +29,24 @@
         </div>
       </div>
       <!-- オススメ商品表示 -->
-      <br>
       <h4 class="recommendation"><i class="fas fa-crown"></i> オススメ商品 <i class="fas fa-crown"></i></h4><br>
-      <div class="row">
-        <div id="multiple-items">
+      <div class="row mx-auto mt-3">
         <% @items.each do |item| %>
-          <div class="recommendation-items">
-            <%= link_to item_path(item.id) do %>
-              <%= attachment_image_tag item, :image, size: "150x150",  fallback: "no_image.jpg"%><br>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>¥<%= (item.price*1.1).floor %></p>
+        <div class="mx-auto">
+          <%= link_to item_path(item) do %>
+          <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', size: '200x200', class: "rounded" %><br>
+          <% end %>
+            <div class="row mt-3">
+              <span class="red-border px-3"><%= item.name %></span>
+            </div>
+          <div class="row mt-1">
+            <span class="offset-8"><%= (item.price * 1.1).floor %> 円</span>
           </div>
-        <% end %>
-　　　　　</div>
         </div>
+        <% end %>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-9"></div>
-      <div class="col-xs-2">
+      </div>
+      <div class="col-xs-6 col-xs-offset-4">
         <p><%= link_to "もっと見る＞", items_path %></p>
       </div>
     </div>
