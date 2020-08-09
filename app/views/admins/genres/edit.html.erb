@@ -2,21 +2,29 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-6">
+		<div class="col-xs-7">
 			<!-- ジャンルの編集＝adminが投稿したジャンル(@genre = Genre.find(params[:id]))を編集したい -->
 			<h3>ジャンル編集</h3><br>
 			<!--アクションを指定-->
-            <%= form_for(@genre, url: {controller: 'admins/genres', action: 'update' }) do |f| %>
-			<div class="field row">
-				<label>ジャンル</label>
-				<%= f.text_field :name, class: "col-xs-3 genre_name" %>
+			<%= form_for(@genre, url: {controller: 'admins/genres', action: 'update' }) do |f| %>
+			<div class="row-fluid">
+			<div class="col order-first">
+				<div class=" col-md-3 ">
+					<label>ジャンル</label>
+				</div>
+			</div>
+			<div class="field  col-md-3 ">
+				<%= f.text_field :name %>
+			</div>
+			<div class=" col-md-3 ">
 				<label><%= f.radio_button :is_status, "有効" %> 有効 </label>
 				<label><%= f.radio_button :is_status, "無効" %> 無効</label>
-
-				<%= f.submit "変更を保存する", class: "btn btn-primary col-xs-3" %>
+			</div>
+			<div class=" col-md-3 ">
+				<%= f.submit "変更を保存する", class: "btn btn-primary" %>
 			</div>
 			<% end %>
-
+            </div>
 		</div>
 	</div>
 </div>
