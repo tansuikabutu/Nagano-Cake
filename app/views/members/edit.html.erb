@@ -2,8 +2,8 @@
   <div class='row'>
     <div class ="col-xs-10">
       <h2>登録情報編集</h2>
-
-      <table>
+　
+    <div class="row">
       <%= form_with(model: @member, local: true, class: 'container') do |f| %>
 
         <div class='form-group row'>
@@ -69,23 +69,22 @@
             <%= f.text_field :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
           </div>
         </div>
-      </table>
+
+        <div class="formgroup row">
+          <div class="col-lg-7"></div>
+          <div class="col-lg-2">
+            <%= f.submit '編集内容を保存する', class:'btn btn-success' %>
+          </div>
+          <div class="col-lg-2">
+            <%= link_to "パスワード変更", edit_member_registration_path, class: 'btn btn-warning' %>
+          </div>
+        </div><br>
+        <div class ="row">
+          <div class="col-lg-11"></div>
+          <div class="col-lg-1">
+            <%= link_to '退会する', member_unsubscribe_path, class:'btn btn-danger'  %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <div class="formgroup row">
-    <div class="col-lg-7"></div>
-    <div class="col-lg-2">
-      <%= f.submit '編集内容を保存する', class:'btn btn-success' %>
-    </div>
-    <div class="col-lg-2">
-      <%= link_to "パスワード変更", edit_member_registration_path, class: 'btn btn-warning' %>
-    </div>
-  </div><br>
-  <div class ="row">
-    <div class="col-lg-11"></div>
-    <div class="col-lg-1">
-      <%= link_to '退会する', member_unsubscribe_path, class:'btn btn-danger'  %>
-    </div>
-  </div>
-    <% end %>
 </div>
