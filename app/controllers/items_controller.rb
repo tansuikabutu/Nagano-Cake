@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
   def index
     @items = Item.where(is_status: true).page(params[:page]).per(8) # where文で販売ステータスが販売中のものだけ表示させる/ページネーションの追加/8件ごとにページ作成
     @quantity = Item.count # quantity => 総量/.count =>カウントメソッド、配列の要素の数を数えるための機能
-    @genres = Genre.all# ジャンルが有効のみ
+
+    @genres = Genre.where(is_status: true)# ジャンルが有効のみ
+
   end
 
   def show

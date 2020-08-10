@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
 
 before_action :configure_permitted_parameters, if: :devise_controller?
+add_flash_types :success, :info, :warning, :danger
+
 
 
 protected
@@ -13,8 +15,13 @@ protected
       end
     end
 
+
     def after_sign_out_path_for(resource)
-    	root_path
+    	if resource == :admin
+      new_admin_session_path
+      else
+      root_path
+      end
     end
 
 

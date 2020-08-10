@@ -1,4 +1,4 @@
-
+<%= render "layouts/flash" %>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-10">
@@ -34,7 +34,7 @@
 			<% end %>
 		</td>
 		<td>
-			<!-- 消費税込みの金額 -->
+			<!-- 消費税込みの金額 helperに定義-->
 			<%= price_include_tax(cart_item.item.price) %>
 		</td>
 		<td>
@@ -63,19 +63,19 @@
 		<!-- 会員トップページへ -->
 		<%= link_to "買い物を続ける", member_top_path, class: "btn btn-primary "%>
 	</div>
-	<div class="col-lg-3 space-sm">
 		<div class="row">
-			<h4>合計金額：<%= sum_all %>円</h4>
+			 <div class="text-right">
+			<h4>合計金額：
+				<input type="text"  size="8"placeholder=" <%= sum_all %> ">円
+			</h4>
+		     </div>
 		</div>
-	</div>
 </div>
 <br>
 <br>
-<br>
 <div class="row space">
-	<div class="col-lg-3 offset-lg-9">
+		<div class="col text-center">
 		<!-- 注文情報入力(entry)画面へ -->
 		<%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-lg" %>
-	</div>
-
+	    </div>
 </div>

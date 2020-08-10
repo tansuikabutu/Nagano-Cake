@@ -1,17 +1,24 @@
-<header class="container-fluid middle-blue-back">
-  <nav class="navbar navbar-expand-lg">
-    <!-- ロゴ画像。あとで差し替え。 -->
-    <div>
-      <%= link_to member_top_path, style: 'color: #fcbf1e' do %>
-      <h1>NaganoCake</h1>
-      <% end %>
-    </div>
-
+<br><header class="container">
+  <nav class="navbar navbar-expand-sm bg-light">
+    <!-- ロゴ画像 -->
+      <%= link_to image_tag('logo.png', :size => '180x110'), '/' %>
 
     <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
-    <div class="collapse navbar-collapse">
       <!-- 管理者 -->
       <ul class="nav navbar-nav navbar-right">
+        <!--検索窓（admin）orメッセージ（member）-->
+          <% if member_signed_in? %>
+            <p>ようこそ! <%= current_member.last_name %><%= current_member.first_name %>さん</p>
+          <% elsif admin_signed_in? %>
+            <form class="form-inline my-2 my-lg-0">
+              <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
+              <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索 
+              </button>
+            </form>
+          <% else %>
+            <p>いらっしゃいませゲストさん</p>
+            <p>ご注文の際は<%= link_to '会員登録', new_member_registration_path, class: 'nav-link' %>をお願いいたします<p>
+          <% end %>
         <% if admin_signed_in? %>
           <div class="admin-message">管理者としてログインしています</div>
           <li class="nav-item"><%= link_to '商品一覧', admins_items_path, class: 'nav-link' %></li>
@@ -34,17 +41,6 @@
           <li class="nav-item"><%= link_to 'ログイン', new_member_session_path, class: 'nav-link' %></li>
         <% end %>
       </ul>
-      <!-- メッセージ(member) or 検索窓(admin) -->
-      <% if member_signed_in? %>
-        <p>ようこそ<%= current_member.last_name %><%= current_member.first_name %>さん</p>
-      <% else admin_signed_in? %>
-        <!-- 検索フォームは仮。あとで機能するものを作って差し替え。 -->
-        <form class="form-inline my-2 my-lg-0">
-        <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
-        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索 
-        </button>
-        </form>
-      <% end %>
     </div>
   </nav>
 </header>

@@ -1,4 +1,6 @@
 class Admins::ItemsController < ApplicationController
+   before_action :authenticate_admin!
+
   def edit
     @item = Item.find(params[:id])
   end

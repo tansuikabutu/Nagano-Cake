@@ -72,4 +72,6 @@ gem 'pry-byebug'
 gem 'jp_prefecture'
 gem 'enum_help'
 gem 'pry-byebug'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
