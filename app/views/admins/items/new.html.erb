@@ -40,7 +40,7 @@
         </div>
         <div class="new-field">
           <h4><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %>
-          <%= f.select :is_status, [['販売中', true], ['販売停止中', false]] %></h4>
+          <%= f.select :is_status, [['販売中', true], ['売切れ', false]] %></h4>
         </div>
         <div class="text-right"><%= f.submit "新規登録" ,class: "btn btn-primary"%></div>
         <% end %>
