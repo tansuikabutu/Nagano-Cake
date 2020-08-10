@@ -8,6 +8,7 @@ class Admins::ItemsController < ApplicationController
   def index
     @items = Item.all
     @items = Item.page(params[:page]).per(10)
+    @quantity = Item.count
   end
 
   def new
