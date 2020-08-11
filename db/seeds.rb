@@ -29,6 +29,10 @@ Genre.create!(
   {
   id: 4,
   name: "キャンディ",
+  },
+  {
+  id: 5,
+  name: "アイス",
   }
  ]
 )
@@ -137,6 +141,46 @@ Genre.create!(
     introduction: "長野安曇野牧場の濃厚マスカルポーネチーズを使用。ほろ苦いコーヒーとフレッシュなマスカルポーネのハーモニーを楽しめる一品。",
     price: 500,
     image: open("./db/images/image5.jpg")
+  },
+  {
+    id: 6,
+    genre_id: 4,
+    name: "そば粉のキャンディー",
+    introduction: "長野松本産のそば粉を使用したキャンディー。どこか懐かしい味がします。",
+    price: 600,
+    image: open("./db/images/image6.jpg")
+  },
+  {
+    id: 7,
+    genre_id: 3,
+    name: "そば粉のフィナンシェ",
+    introduction: "長野松本産のそば粉を使用。甘さ控えめの大人の味です。日本茶と一緒にどうぞ",
+    price: 500,
+    image: open("./db/images/image7.jpg")
+  },
+  {
+    id: 8,
+    genre_id: 5,
+    name: "山葵アイスキャンディー",
+    introduction: "山葵だけど辛くない、さっぱりとした夏にぴったりの一品です。",
+    price: 600,
+    image: open("./db/images/image8.jpg")
+  },
+  {
+    id: 9,
+    genre_id: 3,
+    name: "そば粉とくるみのマフィン",
+    introduction: "長野松本産のそば粉を使用。くるみがたっぷりで食べ応え抜群です。",
+    price: 500,
+    image: open("./db/images/image9.jpg")
+  },
+  {
+    id: 10,
+    genre_id: 5,
+    name: "濃厚抹茶アイス",
+    introduction: "長野松本茶店さんから取り寄せた抹茶を贅沢に使用。ここでしか食べられない濃厚抹茶アイスです。（カップでお届けします）",
+    price: 500,
+    image: open("./db/images/image10.jpg")
   }
  ]
 )
