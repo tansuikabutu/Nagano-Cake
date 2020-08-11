@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-mf">
   <div class="row">
     <div class="col-xs-6">
       <h2>会員の方はこちらからログイン</h2>
@@ -8,14 +8,14 @@
 
 
 
-      <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-group">
+        <%= f.label :メールアドレス, class: "brown-border px-3 pb-1"%><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control offset-6 col-6" %>
       </div>
 
-      <div class="field">
-        <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+      <div class="form-group">
+        <%= f.label :パスワード, class: "brown-border px-3 pb-1"%><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control offset-6 col-6" %>
       </div>
 
 
@@ -26,7 +26,7 @@
 
 
       <div class="actions">
-        <%= f.submit "ログイン"  %>
+        <%= f.submit "ログイン", class: "btn btn-outline-danger btn-block mt-5"  %>
       </div>
       <% end %>
 
@@ -38,6 +38,6 @@
   </div>
 </div>
 
-
+<%= render 'layouts/footer' %>
 
 
