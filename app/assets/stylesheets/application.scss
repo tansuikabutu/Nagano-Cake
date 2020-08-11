@@ -17,6 +17,12 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'MPLUSRounded1c-Light';
   src: font-url('/assets/MPLUSRounded1c-Light.ttf');
@@ -32,6 +38,18 @@ html {
 
 header {
 	font-size :20px;
+}
+
+
+
+.image1 {
+  background-image: image-url('cake8.jpg');
+}
+.image2 {
+  background-image: image-url('cake9.jpg');
+}
+.image3 {
+  background-image: image-url('cake10.jpg');
 }
 
 
