@@ -63,22 +63,23 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-2">
-        <h3>支払方法</h3>
-      </div>
       <div class="col-lg-4">
-        <%= @order.is_payment_method %>
-      </div>
-    </div>
+          <table>
+               <tr>
+                 <h3>支払方法</h3>
+                 <td><%= @order.is_payment_method %></td>
+               </tr>
+          </table>
+        <br>
 
-    <div class="row">
-      <div class="col-lg-2">
-        <h3>お届け先</h3>
-      </div>
-      <div class="col-lg-4">
-        <%= @order.postcode %>
-        <%= @order.address %>
-        <%= @order.name %>
+        <table>
+           <tr>
+             <h3>お届け先</h3>
+           </tr>
+             <td><%= @order.postcode %></td>
+             <tr><td><%= @order.address %></td></tr>
+             <tr><td><%= @order.name %></td></tr>
+        </table>
       </div>
     </div>
 
@@ -92,6 +93,9 @@
 
 
   </div>
+
+  <br>
+  <br>
   <div class="row">
     <div class="col-lg-10">
       <%= f.submit "購入を確定する", class: "btn btn-danger btn-lg" %>
