@@ -16,3 +16,20 @@
 
 @import "bootstrap-sprockets";
 @import 'bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.image1 {
+  background-image: image-url('cake8.jpg');
+}
+.image2 {
+  background-image: image-url('cake9.jpg');
+}
+.image3 {
+  background-image: image-url('cake10.jpg');
+}
+

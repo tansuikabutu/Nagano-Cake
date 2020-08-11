@@ -10,14 +10,19 @@
 
     <!-- font awsome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="css/skippr.css">
   </head>
 
   <body>
     <%= flash[:notice] %>
     <%= render 'layouts/header' %>
+    <script src="js/jquery.min.js"></script>
     <div class="container-fluid">
       <div class="row">
         <%= yield %>
+
       </div>
     </div>
   </body>
