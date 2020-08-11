@@ -16,3 +16,22 @@
 
 @import "bootstrap-sprockets";
 @import 'bootstrap';
+
+@font-face {
+  font-family: 'MPLUSRounded1c-Light';
+  src: font-url('/assets/MPLUSRounded1c-Light.ttf');
+  }
+
+body {
+  font-family: 'MPLUSRounded1c-Light';
+}
+
+html {
+	font-size :100%;
+}
+
+header {
+	font-size :20px;
+}
+
+
