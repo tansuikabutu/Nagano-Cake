@@ -13,28 +13,34 @@
   <div class="row">
     <!-- ジャンル検索サイドバー -->
       <div class="col-xs-2">
-        <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel panel-danger" style="margin-top: 20px;">
           <div class="panel-heading">
             <h5 class="panel-title">ジャンル検索</h5></div>
+              <div class="panel-body">
             <% @genres.each do |genre| %>
               <tr>
             <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げてる。パラメーターにはクリックしたジャンルのidを渡してる。 -->
-                <td class="underline"><i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i></td>
+                <td class="underline">
+                 <ol><li> <%= link_to genre.name, search_items_path(genre.id), method: :get %>
+                  </li></ol>
+                </td>
               </tr>
             <% end %>
+          </div>
         </div>
       </div>
+       <div class="col-xs-1"></div>
     <div class="col-xs-9">
       <!-- 画像背景 -->
       <div class="bg_top">
         <!-- 白背景/サイト説明文 -->
         <div class="bg_top2">
-          <p class="font-text">
+         <h4>
             ようこそ、ながのCakeへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。
-          </p>
+          </h4>
         </div>
       </div><br>
       <!-- オススメ商品表示 -->
