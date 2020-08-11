@@ -23,6 +23,25 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'MPLUSRounded1c-Light';
+  src: font-url('/assets/MPLUSRounded1c-Light.ttf');
+  }
+
+body {
+  font-family: 'MPLUSRounded1c-Light';
+}
+
+html {
+	font-size :100%;
+}
+
+header {
+	font-size :20px;
+}
+
+
+
 .image1 {
   background-image: image-url('cake8.jpg');
 }
@@ -32,4 +51,5 @@
 .image3 {
   background-image: image-url('cake10.jpg');
 }
+
 
