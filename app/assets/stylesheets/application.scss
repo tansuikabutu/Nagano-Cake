@@ -40,9 +40,29 @@ header {
 	font-size :20px;
 }
 
+a {
+color:#5f3830;
+}
+
+a:hover{
+color:#9f385b;
+}
+
+a:active {
+color:#8d6c95;
+}
+
+p {
+font-size :15px;
+}
+
+
+.box img {
+  border-radius: 20px;
+}
+
 footer {
 	margin-top: 120px;
-}
 
 footer .flex{
 	display: flex;

@@ -1,17 +1,20 @@
 <div class="container">
   <div class="row">
       <div class="col-xs-2">
-        <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel panel-danger" style="margin-top: 20px;">
           <div class="panel-heading">
             <h5 class="panel-title">ジャンル検索</h5></div>
+            <div class="panel-body">
             <% @genres.each do |genre| %>
               <tr>
             <!-- each文でジャンル名を取り出し、クリックした際にroutesで設定したitemsのパスを通って、itemsコントローラのsearchアクションに繋げてる。パラメーターにはクリックしたジャンルのidを渡してる。 -->
                 <td class="underline">
-                  <i class="fas fa-caret-right"> <%= link_to genre.name, search_items_path(genre.id), method: :get %></i>
+                  <ol>
+                   <li><%= link_to genre.name, search_items_path(genre.id), method: :get %></li></ol>
                 </td>
               </tr>
             <% end %>
+           </div>
           </div>
         </div>
         <div class="col-xs-1"></div>
@@ -20,13 +23,13 @@
         <h2><i class="fas fa-cookie-bite"></i> 商品一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
         <div class="row">
           <% @items.each do |item| %>
-            <div class="box" style="float:left; margin-right:20px;">
+            <figure class="box" style="float:left; margin-right:20px;">
             <%= link_to item_path(item.id) do %> <!-- 画像をクリックしたら商品詳細画面へ遷移 -->
               <%= attachment_image_tag item, :image, size: "170x170",  fallback: "no_image.jpg"%><br>
             <% end %>
               <p><%= item.name %></p>
               <p>¥<%= (item.price*1.1).floor %></p> <!-- 税込計算式/.floor => 浮動小数点数の切り捨てを行うためFloatクラスのfloorメソッドを使用 -->
-            </div>
+            </figure>
           <% end %>
         </div>
         <div class="col-xs-6 col-xs-offset-4 ">

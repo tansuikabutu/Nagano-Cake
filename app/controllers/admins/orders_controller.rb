@@ -3,7 +3,8 @@ before_action :authenticate_admin!
 
 
   def index
-    @orders = Order.all.order(created_at: :desc) #全ての注文データーを上から注文順に表示して取得する。
+    @orders = Order.all.order(created_at: :desc).page(params[:page]).per(10) #全ての注文データーを上から注文順に表示して取得する。(10件)
+
   end
 
 

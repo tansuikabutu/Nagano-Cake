@@ -12,7 +12,6 @@
 	      <th></th>
 
         <% @orders.each do |order| %>
-        <%# @order_items.each do |order_item| %>
 	    <tr>
 	       <td><%= order.created_at.to_s(:datetime_jp) %></td>
 	      <td><%= order.member.last_name %><%= order.member.first_name %></td>
@@ -20,7 +19,8 @@
 	      <td><%= order.order_status %></td>
 	      <td><%= link_to "注文詳細", admins_order_path(order), class:"btn btn-primary" %></td>
 	    </tr>
-      <%# end %>
+
       <% end %>
     </table>
+    <%= paginate @orders %>
 </div>
