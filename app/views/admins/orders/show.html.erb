@@ -1,7 +1,8 @@
 <div class="container takasa">
   <div class="row">
     <div class="col-sm-12">
-      <h2>注文履歴詳細</h2>
+      <h2> <i class="fas fa-id-card"></i> 注文履歴詳細</h2>
+      <br>
       <!-- 購入詳細情報 -->
       <table>
          <tr>
@@ -55,13 +56,13 @@
             <!-- 製作ステータス変更　更新を押すと更新-->
               <%= form_for order_item,url: admins_order_item_path(order_item) do |f| %>
               <td><%= f.select :make_status,["着手不可","製作待ち","製作中","製作完了"] %></td><!--ステータス選択 -->
-              <td><%= f.submit "更新" ,class:"btn btn-primary btn-xs" %></td>
+              <td><%= f.submit "更新" ,class:"btn btn-primary btn-sm" %></td>
               <% end %>
           </tr>
             <% end %>
         </table>
       </div>
-
+      
       <div class="total">
 
          <h4>商品合計     <%= @order.total_price %>円</h4>
