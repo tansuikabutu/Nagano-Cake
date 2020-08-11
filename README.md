@@ -7,7 +7,7 @@ Name
 洋菓子を扱う店舗を想定し、顧客の新規登録から購入、退会までの一連の動作に加え、管理者の商品作成から販売、顧客管理までを扱えるように作成。
 管理者、顧客で行える処理は下記の通りである。
 
-
+搭載機能一覧
 
 —管理者—
 
@@ -78,9 +78,9 @@ Name
 上記記載のライブラリを各フォームからダウンロード後
 bundel installを行う
 
-・git clone 
+・git clone git@github.com:tansuikabutu/Nagano-Cake.git
 
-・cd nagano_cake
+・cd Nagano-Cake
 
 ・rails db:maigrate
 
